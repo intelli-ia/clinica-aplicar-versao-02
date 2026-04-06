@@ -144,7 +144,7 @@ export default function Home() {
             <li><a href="#faq">FAQ</a></li>
           </ul>
           <div className="nav-cta">
-            <a href="#cta" className="btn btn-glass btn-sm">Agendar</a>
+            <a href="https://api.whatsapp.com/send/?phone=5511917683939&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" className="btn btn-glass btn-sm">Agendar</a>
           </div>
           {/* Hamburger Button - only visible on mobile */}
           <button
@@ -164,7 +164,7 @@ export default function Home() {
             <li><a href="#about" onClick={() => setMenuOpen(false)}>Quem Somos</a></li>
             <li><a href="#testimonials" onClick={() => setMenuOpen(false)}>Depoimentos</a></li>
             <li><a href="#faq" onClick={() => setMenuOpen(false)}>FAQ</a></li>
-            <li><a href="#cta" className="mobile-menu-cta" onClick={() => setMenuOpen(false)}>Agendar consulta</a></li>
+            <li><a href="https://api.whatsapp.com/send/?phone=5511917683939&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" className="mobile-menu-cta" onClick={() => setMenuOpen(false)}>Agendar consulta</a></li>
           </ul>
         </div>
       </nav>
@@ -180,7 +180,7 @@ export default function Home() {
           </h1>
           <h2>Tenha diagnóstico preciso, tratamento especializado e um caminho claro para o desenvolvimento do seu filho.</h2>
           <div className="hero-btns">
-            <a href="#cta" className="btn btn-primary">Fale conosco</a>
+            <a href="https://api.whatsapp.com/send/?phone=5511917683939&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" className="btn btn-primary">Fale conosco</a>
             <a href="#about" className="btn btn-secondary">Saiba mais</a>
           </div>
         </div>
@@ -292,7 +292,7 @@ export default function Home() {
       </section>
 
       {/* D4 - CTA Jornada */}
-      <section className="cta-v4 reveal" id="cta">
+      <section className="cta-v4 reveal">
         <div className="cta-container-v4">
           <div className="cta-content-v4">
             <h1>Pronto para dar o <br /><span className="highlight-alt">próximo passo?</span></h1>
@@ -300,7 +300,7 @@ export default function Home() {
             <h2>Agende uma conversa com nossa equipe. Vamos entender o momento do seu filho e apresentar o melhor caminho para o desenvolvimento dele.</h2>
             
             <div className="cta-action-v4">
-              <a href="https://wa.me/5500000000000" className="btn btn-primary">Fale conosco no WhatsApp</a>
+              <a href="https://api.whatsapp.com/send/?phone=5511917683939&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" className="btn btn-primary">Fale conosco no WhatsApp</a>
             </div>
           </div>
         </div>
@@ -324,7 +324,7 @@ export default function Home() {
             <p>Não oferecemos atalhos, oferecemos acompanhamento real, com resultados visíveis, mas que respeitam a sua história e o seu tempo.</p>
             
             <div className="about-cta-v5">
-              <a href="#cta" className="btn btn-primary">Quero esse tipo de cuidado</a>
+              <a href="https://api.whatsapp.com/send/?phone=5511917683939&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" className="btn btn-primary">Quero esse tipo de cuidado</a>
             </div>
           </div>
 
