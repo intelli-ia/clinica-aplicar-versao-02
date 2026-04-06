@@ -1089,8 +1089,8 @@ section {
 
 .about-header-v5 {
   width: 100%;
-  text-align: center;
-  margin-bottom: 80px;
+  text-align: left; /* Desktop alinhado à esquerda como era antes */
+  margin-bottom: 60px;
 }
 
 .about-container-v5-hybrid {

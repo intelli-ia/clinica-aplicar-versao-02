@@ -310,16 +310,6 @@ export default function Home() {
       <section className="about-v5-hybrid reveal" id="about">
         <div className="about-container-v5-hybrid">
           
-          <div className="about-image-v5-right">
-            <Image 
-              src="/dra_karina.jpg" 
-              alt="Dra. Karina Roig Gatto - Clínica Aplicar" 
-              width={500} 
-              height={600} 
-              className="founder-photo-hybrid" 
-            />
-          </div>
-
           <div className="about-header-v5">
             <h1>Você já tentou de tudo para o <br /><span className="highlight-alt">desenvolvimento do seu filho:</span></h1>
           </div>
@@ -336,6 +326,16 @@ export default function Home() {
             <div className="about-cta-v5">
               <a href="#cta" className="btn btn-primary">Quero esse tipo de cuidado</a>
             </div>
+          </div>
+
+          <div className="about-image-v5-right">
+            <Image 
+              src="/dra_karina.jpg" 
+              alt="Dra. Karina Roig Gatto - Clínica Aplicar" 
+              width={500} 
+              height={600} 
+              className="founder-photo-hybrid" 
+            />
           </div>
 
         </div>
