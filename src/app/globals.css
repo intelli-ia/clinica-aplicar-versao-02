@@ -1089,8 +1089,8 @@ section {
 
 .about-header-v5 {
   width: 100%;
-  text-align: left; /* Desktop alinhado à esquerda como era antes */
-  margin-bottom: 60px;
+  text-align: center; /* Título centralizado como pedido */
+  margin-bottom: 40px; /* Reduzido de 60px para aproximar do texto */
 }
 
 .about-container-v5-hybrid {
