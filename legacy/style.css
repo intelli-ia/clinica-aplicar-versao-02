@@ -1,0 +1,324 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+:root {
+    --primary-color: #FFFFFF;
+    --secondary-color: #496897;
+    --text-color: #496897;
+    --bg-color: #FFFFFF;
+    --font-heading: 'Poppins', sans-serif;
+    --font-body: 'Poppins', sans-serif;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    font-weight: 400;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+h1, h2, h3 {
+    font-family: var(--font-heading);
+    font-weight: 600;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: var(--transition);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Layout */
+section {
+    padding: 80px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 16px 32px;
+    font-size: 1rem;
+    font-weight: 400;
+    text-decoration: none;
+    border-radius: 50px;
+    transition: var(--transition);
+    cursor: pointer;
+    border: 2px solid var(--secondary-color);
+}
+
+.btn-primary {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+}
+
+.btn-primary:hover {
+    background-color: transparent;
+    color: var(--secondary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(73, 104, 151, 0.2);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--secondary-color);
+}
+
+.btn-secondary:hover {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    transform: translateY(-3px);
+}
+
+/* Hero Section */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    padding-top: 120px;
+}
+
+.hero-content {
+    flex: 1;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    line-height: 1.1;
+    margin-bottom: 24px;
+}
+
+.hero h2 {
+    font-size: 1.25rem;
+    font-weight: 400;
+    margin-bottom: 40px;
+    opacity: 0.9;
+}
+
+.hero-image {
+    flex: 1;
+    position: relative;
+    animation: fadeInUp 1s ease-out;
+}
+
+.hero-image img {
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 20px 20px 60px rgba(0,0,0,0.05);
+}
+
+.hero-btns {
+    display: flex;
+    gap: 16px;
+}
+
+/* Manifesto Section */
+.manifesto {
+    text-align: center;
+    background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+    border-radius: 40px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.manifesto h1 {
+    font-size: 2.5rem;
+    margin-bottom: 32px;
+}
+
+.manifesto p {
+    max-width: 800px;
+    margin: 0 auto 24px;
+    font-size: 1.1rem;
+}
+
+/* Testimonials Section */
+.testimonials h1 {
+    text-align: center;
+    margin-bottom: 48px;
+}
+
+.testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 32px;
+}
+
+.testimonial-card {
+    background-color: #f8fafc;
+    padding: 40px;
+    border-radius: 20px;
+    transition: var(--transition);
+}
+
+.testimonial-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(73, 104, 151, 0.05);
+}
+
+.testimonial-card p {
+    font-style: italic;
+    margin-bottom: 20px;
+}
+
+.testimonial-card span {
+    font-weight: 600;
+    color: var(--secondary-color);
+}
+
+/* About Us Section */
+.about {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+}
+
+.about-image {
+    flex: 1;
+}
+
+.about-image img {
+    width: 100%;
+    border-radius: 20px;
+}
+
+.about-content {
+    flex: 1;
+}
+
+.about h1 {
+    font-size: 2.5rem;
+    margin-bottom: 24px;
+}
+
+.about p {
+    margin-bottom: 20px;
+}
+
+/* FAQ Section */
+.faq {
+    max-width: 800px;
+}
+
+.faq h1 {
+    text-align: center;
+    margin-bottom: 48px;
+}
+
+.faq-item {
+    border-bottom: 1px solid rgba(73, 104, 151, 0.1);
+    padding: 24px 0;
+}
+
+.faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    margin-top: 12px;
+    opacity: 0.8;
+}
+
+.faq-item.active .faq-answer {
+    max-height: 200px;
+}
+
+.faq-icon {
+    transition: transform 0.3s ease;
+}
+
+.faq-item.active .faq-icon {
+    transform: rotate(180deg);
+}
+
+/* CTA Section */
+.cta-final {
+    text-align: center;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    padding: 100px 20px;
+    border-radius: 40px;
+    margin: 40px 20px;
+}
+
+.cta-final h1 {
+    font-size: 3rem;
+    margin-bottom: 24px;
+}
+
+.cta-final p {
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-final .btn-primary {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    border-color: var(--primary-color);
+}
+
+.cta-final .btn-primary:hover {
+    background-color: transparent;
+    color: var(--primary-color);
+}
+
+.whatsapp-note {
+    display: block;
+    margin-top: 16px;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* Responsive */
+@media (max-width: 968px) {
+    .hero, .about {
+        flex-direction: column;
+        text-align: center;
+    }
+    .hero-btns {
+        justify-content: center;
+    }
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+}
