@@ -144,7 +144,7 @@ export default function Home() {
             <li><a href="#faq">FAQ</a></li>
           </ul>
           <div className="nav-cta">
-            <a href="https://api.whatsapp.com/send/?phone=5511917683939&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" className="btn btn-glass btn-sm">Agendar</a>
+            <a href="https://api.whatsapp.com/send?phone=5511930034781&text=Olá!%20Vim%20do%20site%20e%20gostaria%20de%20saber%20mais" target="_blank" rel="noopener noreferrer" className="btn btn-glass btn-sm">Agendar</a>
           </div>
           {/* Hamburger Button - only visible on mobile */}
           <button
@@ -164,7 +164,7 @@ export default function Home() {
             <li><a href="#about" onClick={() => setMenuOpen(false)}>Quem Somos</a></li>
             <li><a href="#testimonials" onClick={() => setMenuOpen(false)}>Depoimentos</a></li>
             <li><a href="#faq" onClick={() => setMenuOpen(false)}>FAQ</a></li>
-            <li><a href="https://api.whatsapp.com/send/?phone=5511917683939&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" className="mobile-menu-cta" onClick={() => setMenuOpen(false)}>Agendar consulta</a></li>
+            <li><a href="https://api.whatsapp.com/send?phone=5511930034781&text=Olá!%20Vim%20do%20site%20e%20gostaria%20de%20saber%20mais" target="_blank" rel="noopener noreferrer" className="mobile-menu-cta" onClick={() => setMenuOpen(false)}>Agendar consulta</a></li>
           </ul>
         </div>
       </nav>
@@ -180,8 +180,8 @@ export default function Home() {
           </h1>
           <h2>Tenha diagnóstico preciso, tratamento especializado e um caminho claro para o desenvolvimento do seu filho.</h2>
           <div className="hero-btns">
-            <a href="https://api.whatsapp.com/send/?phone=5511917683939&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" className="btn btn-primary">Fale conosco</a>
-            <a href="#about" className="btn btn-secondary">Saiba mais</a>
+            <a href="https://api.whatsapp.com/send?phone=5511930034781&text=Olá!%20Vim%20do%20site%20e%20gostaria%20de%20saber%20mais" target="_blank" rel="noopener noreferrer" className="btn btn-primary">Fale conosco</a>
+            <a href="#manifesto" className="btn btn-secondary">Saiba mais</a>
           </div>
         </div>
       </section>
@@ -300,7 +300,7 @@ export default function Home() {
             <h2>Agende uma conversa com nossa equipe. Vamos entender o momento do seu filho e apresentar o melhor caminho para o desenvolvimento dele.</h2>
             
             <div className="cta-action-v4">
-              <a href="https://api.whatsapp.com/send/?phone=5511917683939&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" className="btn btn-primary">Fale conosco no WhatsApp</a>
+              <a href="https://api.whatsapp.com/send?phone=5511930034781&text=Olá!%20Vim%20do%20site%20e%20gostaria%20de%20saber%20mais" target="_blank" rel="noopener noreferrer" className="btn btn-primary">Fale conosco no WhatsApp</a>
             </div>
           </div>
         </div>
@@ -324,7 +324,7 @@ export default function Home() {
             <p>Não oferecemos atalhos, oferecemos acompanhamento real, com resultados visíveis, mas que respeitam a sua história e o seu tempo.</p>
             
             <div className="about-cta-v5">
-              <a href="https://api.whatsapp.com/send/?phone=5511917683939&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" className="btn btn-primary">Quero esse tipo de cuidado</a>
+              <a href="https://api.whatsapp.com/send?phone=5511930034781&text=Olá!%20Vim%20do%20site%20e%20gostaria%20de%20saber%20mais" target="_blank" rel="noopener noreferrer" className="btn btn-primary">Quero esse tipo de cuidado</a>
             </div>
           </div>
 
