@@ -136,7 +136,6 @@ export default function Home() {
           <div className="logo">
             <Image src="/logo.png" alt="Clínica Aplicar" width={180} height={60} priority />
           </div>
-          
           <div className="nav-right-actions">
             <ul className="nav-links">
               <li><a href="#manifesto">A Clínica</a></li>
@@ -196,7 +195,7 @@ export default function Home() {
           </h2>
           <div className="hero-btns">
             <a href="https://api.whatsapp.com/send/?phone=5511917683939&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" className="btn btn-primary">Fale conosco</a>
-            <a href="#about" className="btn btn-secondary">Saiba mais</a>
+            <a href="#manifesto" className="btn btn-secondary">Saiba mais</a>
           </div>
         </div>
 
