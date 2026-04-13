@@ -131,20 +131,21 @@ export default function Home() {
   return (
     <>
       {/* Navbar */}
-      <nav className={`navbar ${navLight ? 'nav-light' : ''}`}>
+      <nav className={`navbar ${menuOpen ? 'open' : ''}`}>
         <div className="nav-container">
           <div className="logo">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/logo.png" alt="Logo Clínica Aplicar" />
+            <Image src="/logo.png" alt="Clínica Aplicar" width={180} height={60} priority />
           </div>
-          <ul className="nav-links">
-            <li><a href="#manifesto">A Clínica</a></li>
-            <li><a href="#about">Quem Somos</a></li>
-            <li><a href="#testimonials">Depoimentos</a></li>
-            <li><a href="#faq">FAQ</a></li>
-          </ul>
-          <div className="nav-cta">
-            <a href="https://api.whatsapp.com/send/?phone=5511917683939&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" className="btn btn-glass btn-sm">Agendar</a>
+          
+          <div className="nav-right-actions">
+            <ul className="nav-links">
+              <li><a href="#manifesto">A Clínica</a></li>
+              <li><a href="#about">Quem Somos</a></li>
+              <li><a href="#faq">FAQ</a></li>
+            </ul>
+            <div className="nav-cta">
+              <a href="https://api.whatsapp.com/send/?phone=5511917683939&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" className="btn btn-sm btn-glass">Agendar</a>
+            </div>
           </div>
           {/* Hamburger Button - only visible on mobile */}
           <button
@@ -162,7 +163,6 @@ export default function Home() {
           <ul>
             <li><a href="#manifesto" onClick={() => setMenuOpen(false)}>A Clínica</a></li>
             <li><a href="#about" onClick={() => setMenuOpen(false)}>Quem Somos</a></li>
-            <li><a href="#testimonials" onClick={() => setMenuOpen(false)}>Depoimentos</a></li>
             <li><a href="#faq" onClick={() => setMenuOpen(false)}>FAQ</a></li>
             <li><a href="https://api.whatsapp.com/send/?phone=5511917683939&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" className="mobile-menu-cta" onClick={() => setMenuOpen(false)}>Agendar consulta</a></li>
           </ul>
@@ -171,51 +171,66 @@ export default function Home() {
 
       {/* D1 - Hero */}
       <section className="hero">
+        {/* Imagem de fundo otimizada que segue o zoom/escala */}
+        <Image 
+          src="/hero_hq.jpg" 
+          alt="Clínica Aplicar Hero" 
+          fill
+          priority
+          quality={100}
+          className="hero-bg-image"
+          style={{ objectPosition: '85% center' }}
+        />
+
         <div className="hero-content">
           <span className="hero-eyebrow">CLÍNICA APLICAR</span>
           <h1>
-            Transforme a incerteza em <br />
-            um <span className="highlight">plano claro</span> para o <br />
-            desenvolvimento do seu filho
+            <span className="hero-line">Transforme a </span>
+            <span className="hero-line">incerteza em um </span>
+            <span className="hero-line"><span className="highlight">plano claro</span> para o </span>
+            <span className="hero-line">desenvolvimento </span>
+            <span className="hero-line">do seu filho</span>
           </h1>
-          <h2>Tenha diagnóstico preciso, tratamento especializado e um caminho claro para o desenvolvimento do seu filho.</h2>
+          <h2 className="hero-description">
+            Tenha diagnóstico preciso, tratamento especializado e um caminho claro para o desenvolvimento do seu filho
+          </h2>
           <div className="hero-btns">
             <a href="https://api.whatsapp.com/send/?phone=5511917683939&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" className="btn btn-primary">Fale conosco</a>
             <a href="#about" className="btn btn-secondary">Saiba mais</a>
           </div>
         </div>
-      </section>
 
-      {/* Ticker Infinito */}
-      <div className="ticker-wrapper">
-        <div className="ticker-content">
-          <span>TRANSPARÊNCIA E ENTREGA</span>
-          <span className="separator">•</span>
-          <span>20+ ANOS DE RESULTADOS</span>
-          <span className="separator">•</span>
-          <span>CIÊNCIA ABA ADAPTADA</span>
-          <span className="separator">•</span>
-          <span>ONDE A VIDA ACONTECE</span>
-          <span className="separator">•</span>
-          <span>CONSTRUIR, NÃO CORRIGIR</span>
-          <span className="separator">•</span>
-          {/* Repetir para o loop ser infinito */}
-          <span>TRANSPARÊNCIA E ENTREGA</span>
-          <span className="separator">•</span>
-          <span>20+ ANOS DE RESULTADOS</span>
-          <span className="separator">•</span>
-          <span>CIÊNCIA ABA ADAPTADA</span>
-          <span className="separator">•</span>
-          <span>ONDE A VIDA ACONTECE</span>
-          <span className="separator">•</span>
-          <span>CONSTRUIR, NÃO CORRIGIR</span>
-          <span className="separator">•</span>
+        {/* Ticker Infinito (Agora fixo na base da Hero) */}
+        <div className="ticker-wrapper">
+          <div className="ticker-content">
+            <span>TRANSPARÊNCIA E ENTREGA</span>
+            <span className="separator">•</span>
+            <span>20+ ANOS DE RESULTADOS</span>
+            <span className="separator">•</span>
+            <span>CIÊNCIA ABA ADAPTADA</span>
+            <span className="separator">•</span>
+            <span>ONDE A VIDA ACONTECE</span>
+            <span className="separator">•</span>
+            <span>CONSTRUIR, NÃO CORRIGIR</span>
+            <span className="separator">•</span>
+            {/* Repetir para o loop ser infinito */}
+            <span>TRANSPARÊNCIA E ENTREGA</span>
+            <span className="separator">•</span>
+            <span>20+ ANOS DE RESULTADOS</span>
+            <span className="separator">•</span>
+            <span>CIÊNCIA ABA ADAPTADA</span>
+            <span className="separator">•</span>
+            <span>ONDE A VIDA ACONTECE</span>
+            <span className="separator">•</span>
+            <span>CONSTRUIR, NÃO CORRIGIR</span>
+            <span className="separator">•</span>
+          </div>
         </div>
-      </div>
+      </section>
       <section className="manifesto-timeline reveal" id="manifesto">
         <div className="section-header">
           <h1>O diagnóstico não define o futuro do seu filho. <br /> <span className="highlight-alt">O tratamento, sim.</span></h1>
-          <p className="subtitle">Entenda como construímos resultados reais com a ciência ABA</p>
+          <p className="subtitle">Entenda como construímos resultados <br /> reais com a ciência ABA</p>
         </div>
 
         <div className="timeline-container">
@@ -268,28 +283,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* D3 - Depoimentos Simples */}
-      <section className="testimonials-simple" id="testimonials">
-        <div className="section-header reveal">
-          <span className="hero-eyebrow" style={{color: 'var(--secondary-color)', textAlign: 'center'}}>DEPOIMENTOS</span>
-          <h1 className="testimonials-heading" style={{textAlign: 'center'}}>O que as famílias dizem</h1>
-        </div>
-
-        <div className="testimonial-simple-grid">
-          {testimonials.map((t, i) => (
-            <div key={i} className="reveal testimonial-card-v3">
-              <div className="card-top">
-                <Image src={t.image} alt={t.name} width={60} height={60} className="profile-img-sm" />
-                <div className="card-meta">
-                  <strong>{t.name}</strong>
-                  <span>{t.city}</span>
-                </div>
-              </div>
-              <p>&quot;{t.text}&quot;</p>
-            </div>
-          ))}
-        </div>
-      </section>
 
       {/* D4 - CTA Jornada */}
       <section className="cta-v4 reveal">
@@ -300,7 +293,7 @@ export default function Home() {
             <h2>Agende uma conversa com nossa equipe. Vamos entender o momento do seu filho e apresentar o melhor caminho para o desenvolvimento dele.</h2>
             
             <div className="cta-action-v4">
-              <a href="https://api.whatsapp.com/send/?phone=5511917683939&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" className="btn btn-primary">Fale conosco no WhatsApp</a>
+              <a href="https://api.whatsapp.com/send/?phone=5511917683939&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" className="btn btn-cta-light">Fale conosco no WhatsApp</a>
             </div>
           </div>
         </div>
@@ -341,25 +334,36 @@ export default function Home() {
         </div>
       </section>
 
-      {/* D6 - FAQ (Dark Glass Edition) */}
-      <section className="faq-dark-theme reveal" id="faq">
-        <h1>Perguntas Frequentes</h1>
-        
-        <div className="faq-glass-box">
+      {/* D6 - FAQ (Grid Edition) */}
+      <section className="faq-grid-v7 reveal" id="faq">
+        <div className="faq-header-v7">
+          <h1>Perguntas <span className="highlight-alt">Frequentes</span></h1>
+          <p>Tire suas principais dúvidas sobre o atendimento na Clínica Aplicar</p>
+        </div>
+
+        <div className="faq-container-v7">
           {faqs.map((faq, index) => (
             <div 
               key={index} 
-              className={`faq-item ${activeFaq === index ? 'active' : ''}`}
+              className={`faq-card-v7 ${activeFaq === index ? 'active' : ''}`}
+              onClick={() => toggleFaq(index)}
             >
-              <div className="faq-question" onClick={() => toggleFaq(index)}>
-                {faq.question}
-                <span className="faq-icon-pill">{activeFaq === index ? '−' : '+'}</span>
+              <div className="faq-question-v7">
+                <span className="faq-num">0{index + 1}</span>
+                <h3>{faq.question}</h3>
+                <span className="faq-plus">{activeFaq === index ? '−' : '+'}</span>
               </div>
-              <div className="faq-answer">
-                {faq.answer}
+              <div className="faq-answer-v7">
+                <p>{faq.answer}</p>
               </div>
             </div>
           ))}
+        </div>
+
+        <div className="faq-footer-v7">
+          <a href="https://api.whatsapp.com/send/?phone=5511917683939&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" className="btn btn-primary">
+            Tire outras dúvidas
+          </a>
         </div>
       </section>
 

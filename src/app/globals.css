@@ -3,11 +3,16 @@
 :root {
   --primary-color: #FFFFFF;
   --secondary-color: #496897;
-  --text-color: #496897;
+  --accent-color: #E67E22; /* Um tom de laranja suave para destaques complementares */
+  --text-color: #2D3E50;
+  --text-muted: #6B7C93;
   --bg-color: #FFFFFF;
+  --bg-alt: #F8FAFC;
   --font-heading: 'Poppins', sans-serif;
   --font-body: 'Poppins', sans-serif;
-  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.4);
 }
 
 html, body {
@@ -122,26 +127,49 @@ section {
   transform: translateY(-3px);
 }
 
+/* Botão CTA Light (Fundo branco, texto azul) */
+.btn-cta-light {
+  background-color: #ffffff !important;
+  color: var(--secondary-color) !important;
+  border-color: #ffffff !important;
+  font-weight: 600;
+}
+
+.btn-cta-light:hover {
+  background-color: transparent !important;
+  color: #ffffff !important;
+  border-color: #ffffff !important;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
 /* Navbar */
 .navbar {
-  position: absolute;
+  position: absolute; /* Apenas no topo da Hero, não acompanha o scroll */
   top: 0;
   left: 0;
   width: 100%;
-  padding: 15px 5%;
+  padding: 20px 5%;
   z-index: 1000;
-  background: rgba(255, 255, 255, 0.02);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-bottom: 1px solid rgba(73, 104, 151, 0.1);
   transition: var(--transition);
 }
 
 .nav-container {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.nav-right-actions {
+  display: flex;
+  align-items: center;
+  gap: 40px;
 }
 
 /* Nav Light Theme (Dark text for white sections) */
@@ -154,23 +182,11 @@ section {
   color: var(--secondary-color);
 }
 
-.navbar.nav-light .logo img {
-  filter: brightness(0) saturate(100%) invert(43%) sepia(35%) saturate(541%) hue-rotate(176deg) brightness(89%) contrast(92%);
-}
-
-.navbar.nav-light .hamburger span {
-  background: var(--secondary-color);
-}
-
-.navbar.nav-light .btn-glass {
-  background: rgba(73, 104, 151, 0.1) !important;
-  color: var(--secondary-color) !important;
-  border-color: rgba(73, 104, 151, 0.2) !important;
-}
-
 .logo img {
-  height: 50px;
+  height: 40px;
   width: auto;
+  /* Filtro para transformar logo branco no azul do projeto (#496897) */
+  filter: brightness(0) saturate(100%) invert(43%) sepia(35%) saturate(541%) hue-rotate(176deg) brightness(89%) contrast(92%);
 }
 
 .nav-links {
@@ -181,10 +197,11 @@ section {
 
 .nav-links a {
   text-decoration: none;
-  color: var(--primary-color);
-  font-size: 0.9rem;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
+  color: var(--secondary-color);
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  text-transform: capitalize;
   transition: color 0.3s ease;
 }
 
@@ -204,19 +221,19 @@ section {
 
 /* Glass Button - Estilo Hero/Nav */
 .btn-glass {
-  background: rgba(255, 255, 255, 0.1) !important;
-  backdrop-filter: blur(12px) !important;
-  -webkit-backdrop-filter: blur(12px) !important;
-  border: 1px solid rgba(255, 255, 255, 0.2) !important;
-  color: #ffffff !important;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  background: var(--secondary-color) !important;
+  color: #fff !important;
+  border-radius: 50px;
+  box-shadow: 0 4px 15px rgba(73, 104, 151, 0.2);
   transition: all 0.3s ease;
 }
 
 .btn-glass:hover {
-  background: rgba(255, 255, 255, 0.2) !important;
+  background: #ffffff !important;
+  color: var(--secondary-color) !important;
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 20px rgba(73, 104, 151, 0.2);
+  border-color: var(--secondary-color) !important;
 }
 
 /* === Hamburger Button === */
@@ -237,7 +254,7 @@ section {
   display: block;
   width: 24px;
   height: 2px;
-  background: #ffffff;
+  background: var(--secondary-color);
   border-radius: 2px;
   transition: all 0.3s ease;
   transform-origin: center;
@@ -327,17 +344,33 @@ section {
 /* Hero Section */
 .hero {
   position: relative;
-  min-height: 100vh;
+  width: 100%;
   display: flex;
-  align-items: center; /* Centraliza verticalmente o conteúdo */
-  justify-content: center;
-  background-image: url('/hero_bg_blur.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  padding: 100px 0; /* Padding equilibrado para considerar a navbar */
+  align-items: center;
+  justify-content: flex-start;
+  padding: 8rem 5% 4rem; /* Reduzido para trazer a faixa para a 1ª dobra */
+  min-height: 100vh;
   max-width: 100%;
-  text-align: center;
+  overflow: hidden;
+  background-color: #f8fafc;
+}
+
+.hero-bg-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 85% center !important;
+  transform: scale(1.15); /* Aumenta a imagem para dar mais zoom na criança */
+  z-index: 0;
+  pointer-events: none;
+}
+
+.hero-line {
+  display: block;
+  white-space: nowrap;
 }
 
 .hero::before {
@@ -347,111 +380,118 @@ section {
   left: 0;
   width: 100%;
   height: 100%;
-  /* Darker overlay to match the reference image's aesthetic */
-  background: rgba(18, 18, 18, 0.85);
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0) 100%);
   z-index: 1;
 }
 
 .hero-content {
   position: relative;
   z-index: 2;
-  width: 100%;
-  max-width: 900px;
-  padding: 120px 20px; /* Mantém o mesmo espaço que os traços (80px altura + 40px margem) ocupavam */
-  margin: 0 auto;
+  width: fit-content;
+  max-width: 600px;
+  padding: 2.5rem;
+  margin-left: 8%; /* Move a caixa um pouco mais para a direita */
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 40px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.05);
+  text-align: left;
 }
 
 .hero-eyebrow {
   display: block;
   text-transform: uppercase;
-  font-weight: 300;
-  letter-spacing: 8px; /* Espaçamento dobrado */
+  font-weight: 600;
+  letter-spacing: 2px;
   font-size: 0.85rem;
-  color: var(--primary-color); /* Agora em branco */
-  margin-bottom: 24px;
+  color: var(--secondary-color);
+  margin-bottom: 20px;
+  opacity: 0.8;
 }
 
 .hero h1 {
-  font-size: 3.5rem;
-  line-height: 1.1;
+  font-size: 2.1rem; /* Reduzido de 2.35rem */
+  line-height: 1.2;
   font-weight: 600;
-  margin-bottom: 32px;
-  color: var(--primary-color);
-  letter-spacing: -0.02em;
-  animation: fadeInUp 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+  margin-bottom: 20px;
+  color: var(--secondary-color);
+  letter-spacing: -0.01em;
 }
 
 .hero h1 .highlight {
-  color: var(--secondary-color);
-  position: relative;
-  /* Grifado sutil estilo premium */
-  border-bottom: 2px solid var(--secondary-color);
-  display: inline-block;
-  line-height: 0.95;
+  color: #E67E22; /* Cor de destaque para o "plano claro" conforme referência */
+  border-bottom: none;
+  display: inline;
 }
 
-.hero h2 {
-  font-size: 1.25rem;
-  font-weight: 300;
-  margin-bottom: 40px;
-  opacity: 0.85;
-  color: rgba(255, 255, 255, 0.9);
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
+.hero h2.hero-description {
+  font-size: 0.95rem; /* Reduzido de 1.05rem */
+  font-weight: 400;
+  margin-bottom: 32px;
+  color: var(--text-muted);
+  max-width: 100%;
+  line-height: 1.5;
 }
 
 .hero-btns {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 16px;
-  margin-bottom: 0px; 
-  transition: gap 0.4s ease;
 }
 
 .hero-btns:hover {
   gap: 24px; /* Efeito de se afastarem levemente */
 }
 
-.hero .btn {
-  font-weight: 600; /* Texto em negrito */
+.hero-btns .btn {
+  padding: 12px 24px;
+  font-size: 0.85rem;
 }
 
 /* Ajuste específico para o secundário na Hero (Branco com borda) */
 .hero .btn-secondary {
-  background-color: var(--primary-color);
+  background-color: #ffffff;
   color: var(--secondary-color);
-  border-color: var(--primary-color);
+  border-color: #ffffff;
 }
 
 .hero .btn-secondary:hover {
-  background-color: transparent;
-  color: var(--primary-color);
+  background-color: var(--secondary-color);
+  color: #ffffff;
+  border-color: var(--secondary-color);
 }
 
 /* Ticker Infinito */
 .ticker-wrapper {
-  background-color: #0a0b10; /* O tom exato de Azul Marinho Profundo da sua imagem */
-  padding: 20px 0;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  padding: 12px 0;
   overflow: hidden;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  width: 100%;
+  border-top: 1px solid rgba(73, 104, 151, 0.1);
+  width: 100vw;
+  z-index: 3;
+  position: absolute;
+  bottom: 0;
+  left: 0;
 }
 
 .ticker-content {
   display: flex;
   white-space: nowrap;
-  animation: ticker 7.5s linear infinite; /* 2x mais rápido */
+  align-items: center; /* Centraliza verticalmente as palavras */
+  animation: ticker 15s linear infinite;
 }
 
 .ticker-content span {
-  font-size: 1.1rem;
-  font-weight: 500;
+  font-size: 0.9rem;
+  font-weight: 600;
   color: var(--secondary-color);
-  padding: 0 20px;
-  letter-spacing: 2.5px;
-  opacity: 0.8;
+  padding: 0 15px;
+  letter-spacing: 1.5px;
+  opacity: 0.9;
 }
 
 .ticker-content .separator {
@@ -475,11 +515,11 @@ section {
   right: 50%;
   margin-left: -50vw;
   margin-right: -50vw;
-  background-color: #0a0b10;
+  background-color: var(--bg-alt);
   padding: 120px 20px;
   max-width: 100vw;
   overflow: hidden;
-  color: #ffffff;
+  color: var(--text-color);
 }
 
 .manifesto-timeline .section-header {
@@ -489,7 +529,7 @@ section {
 
 .manifesto-timeline h1 {
   font-size: 2.8rem;
-  color: #ffffff;
+  color: var(--secondary-color);
   margin-bottom: 16px;
   line-height: 1.2;
 }
@@ -573,8 +613,8 @@ section {
   background-color: var(--secondary-color);
   border-radius: 50%;
   z-index: 2;
-  box-shadow: 0 0 20px var(--secondary-color); /* Glow */
-  border: 4px solid #0f1115;
+  box-shadow: 0 0 20px rgba(73, 104, 151, 0.3);
+  border: 4px solid var(--bg-alt);
   transition: transform 0.5s cubic-bezier(0.17, 0.55, 0.55, 1) 0.4s;
 }
 
@@ -584,12 +624,13 @@ section {
 
 .timeline-card {
   width: 400px;
-  background: rgba(255, 255, 255, 0.03);
+  background: #ffffff;
   padding: 30px;
   border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(73, 104, 151, 0.1);
   transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
   margin: 0 40px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
 }
 
 .timeline-card:hover {
@@ -607,8 +648,8 @@ section {
 .timeline-card p {
   font-size: 1rem;
   line-height: 1.6;
-  opacity: 0.8;
-  color: #e0e0e0;
+  opacity: 0.9;
+  color: var(--text-muted);
 }
 
 @media (max-width: 768px) {
@@ -774,12 +815,147 @@ section {
   margin-top: 16px;
 }
 
+/* FAQ Section v7 - Centered Grid Edition */
+.faq-grid-v7 {
+  width: 100%;
+  background-color: var(--bg-alt);
+  padding: 120px 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.faq-header-v7 {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.faq-header-v7 h1 {
+  font-size: 3rem;
+  color: var(--secondary-color);
+  margin-bottom: 16px;
+}
+
+.faq-container-v7 {
+  max-width: 1200px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 60px;
+}
+
+.faq-card-v7 {
+  background: #ffffff;
+  border: 1px solid rgba(73, 104, 151, 0.08);
+  border-radius: 20px;
+  padding: 30px;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+}
+
+.faq-card-v7:hover {
+  transform: translateY(-5px);
+  border-color: var(--secondary-color);
+  box-shadow: 0 15px 40px rgba(73, 104, 151, 0.05);
+}
+
+.faq-card-v7.active {
+  background: var(--secondary-color);
+  border-color: var(--secondary-color);
+}
+
+.faq-question-v7 {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  position: relative;
+}
+
+.faq-num {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--secondary-color);
+  opacity: 0.5;
+  margin-top: 4px;
+}
+
+.faq-card-v7.active .faq-num {
+  color: #ffffff;
+  opacity: 0.8;
+}
+
+.faq-card-v7 h3 {
+  font-size: 1.05rem;
+  line-height: 1.4;
+  color: var(--secondary-color);
+  margin-right: 20px;
+  flex: 1;
+}
+
+.faq-card-v7.active h3 {
+  color: #ffffff;
+}
+
+.faq-plus {
+  font-size: 1.2rem;
+  color: var(--secondary-color);
+  font-weight: 600;
+}
+
+.faq-card-v7.active .faq-plus {
+  color: #ffffff;
+}
+
+.faq-answer-v7 {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: all 0.4s ease;
+}
+
+.faq-card-v7.active .faq-answer-v7 {
+  max-height: 300px;
+  opacity: 1;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.faq-answer-v7 p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+.faq-card-v7.active .faq-answer-v7 p {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+@media (max-width: 1024px) {
+  .faq-container-v7 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .faq-container-v7 {
+    grid-template-columns: 1fr;
+  }
+  .faq-header-v7 h1 {
+    font-size: 2.2rem;
+  }
+}
+
 /* FAQ Section - Dark Glass Edition */
 .faq-dark-theme {
   width: 100vw !important;
   max-width: 100vw !important;
-  background-color: #0a0b10 !important;
-  color: #ffffff !important;
+  background-color: var(--bg-alt) !important;
+  color: var(--text-color) !important;
   padding: 120px 0;
   position: relative !important;
   left: 50% !important;
@@ -793,7 +969,7 @@ section {
   text-align: center;
   font-size: 3.5rem;
   margin-bottom: 70px;
-  color: #ffffff;
+  color: var(--secondary-color);
   font-weight: 700;
 }
 
@@ -801,16 +977,14 @@ section {
   max-width: 1000px;
   margin: 0 auto;
   padding: 60px;
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(25px);
-  -webkit-backdrop-filter: blur(25px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #ffffff;
+  border: 1px solid rgba(73, 104, 151, 0.1);
   border-radius: 40px;
-  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.05);
 }
 
 .faq-item {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(73, 104, 151, 0.1);
   padding: 24px 0;
 }
 
@@ -826,7 +1000,7 @@ section {
   cursor: pointer;
   font-weight: 600;
   font-size: 1.25rem;
-  color: #fff;
+  color: var(--text-color);
   transition: all 0.3s ease;
 }
 
@@ -837,20 +1011,17 @@ section {
 .faq-icon-pill {
   width: 40px !important;
   height: 40px !important;
-  background: rgba(255, 255, 255, 0.08) !important;
+  background: rgba(73, 104, 151, 0.05) !important;
   border-radius: 50% !important;
   display: flex !important;
   justify-content: center !important;
   align-items: center !important;
   color: var(--secondary-color) !important;
   font-size: 1.6rem !important;
-  font-family: Arial, sans-serif !important; /* Fonte neutra pra centralizar melhor */
+  font-family: Arial, sans-serif !important;
   transition: all 0.3s ease !important;
-  border: 1.5px solid rgba(255, 255, 255, 0.2) !important;
+  border: 1.5px solid rgba(73, 104, 151, 0.1) !important;
   flex-shrink: 0 !important;
-  padding: 0 !important;
-  margin: 0 !important;
-  line-height: normal !important;
 }
 
 .faq-item.active .faq-icon-pill {
@@ -873,7 +1044,7 @@ section {
   opacity: 0;
   font-size: 1.1rem;
   line-height: 1.7;
-  color: rgba(255, 255, 255, 0.65);
+  color: var(--text-muted);
 }
 
 .faq-item.active .faq-answer {
@@ -984,30 +1155,8 @@ section {
 .cta-v4 {
   width: 100vw !important;
   max-width: 100vw !important;
-  background-color: #0a0b10 !important;
-  color: var(--primary-color);
-  padding: 120px 0;
-  position: relative !important;
-  left: 50% !important;
-  right: 50% !important;
-  margin-left: -50vw !important;
-  margin-right: -50vw !important;
-  box-sizing: border-box;
-}
-
-.cta-container-v4 {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 0 5%;
-  text-align: center;
-}
-
-/* D4 - CTA Estilo Hero */
-.cta-v4 {
-  width: 100vw !important;
-  max-width: 100vw !important;
-  background-color: #0a0b10 !important;
-  color: var(--primary-color);
+  background-color: var(--secondary-color) !important; /* CTA em destaque com a cor da marca */
+  color: #ffffff;
   padding: 120px 0;
   position: relative !important;
   left: 50% !important;
@@ -1033,7 +1182,7 @@ section {
 }
 
 .cta-content-v4 .highlight-alt {
-  color: var(--secondary-color);
+  color: var(--accent-color);
   font-weight: 700;
 }
 
@@ -1357,75 +1506,83 @@ section {
     padding: 40px 20px !important;
   }
 
+  /* === HERO MOBILE (Redesenhada para Elegância) === */
   .hero {
-    padding: 80px 0 40px !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center !important; /* Centraliza verticalmente no 100vh */
+    align-items: center;
+    padding: 80px 20px !important; 
+    background: linear-gradient(180deg, #ffffff 0%, var(--bg-alt) 100%) !important; 
+    min-height: 100vh !important; /* Ocupa toda a primeira dobra */
+    position: relative;
   }
 
-  /* === HERO === */
+  .hero-bg-image {
+    display: none !important; 
+  }
+
+  .hero-content {
+    background: #ffffff !important;
+    border: 1px solid rgba(73, 104, 151, 0.08) !important;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.03) !important;
+    padding: 24px 16px !important; /* Caixa mais reduzida */
+    margin-left: 0 !important;
+    max-width: 92% !important; /* Um pouco mais estreita */
+    text-align: center !important;
+    border-radius: 24px !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
   .hero h1 {
-    font-size: 1.2rem; /* Reduzido ao máximo para manter as 3 linhas do desktop */
-    line-height: 1.2;
-    letter-spacing: -0.01em;
+    font-size: 1.4rem !important; 
+    line-height: 1.25 !important;
+    margin-bottom: 12px !important;
+    font-weight: 700 !important;
+    color: var(--secondary-color) !important;
   }
 
-  .hero h2 {
-    font-size: 0.85rem;
-    padding: 0 4px;
-    line-height: 1.6;
+  .hero h2.hero-description {
+    font-size: 0.85rem !important;
+    line-height: 1.4 !important;
+    margin-bottom: 24px !important;
+    color: var(--text-muted) !important;
+    max-width: 100% !important;
   }
 
-  .hero-eyebrow {
-    font-size: 0.6rem;
-    letter-spacing: 4px;
-    margin-bottom: 16px;
-  }
-
-  /* Botões LADO A LADO igual ao desktop — apenas menores */
   .hero-btns {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
+    width: 100% !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+    display: flex !important;
   }
 
   .hero-btns .btn {
-    padding: 11px 18px;
-    font-size: 0.78rem;
-    letter-spacing: 0.5px;
-    flex: 0 0 auto;
+    width: 100% !important;
+    padding: 14px 20px !important;
+    font-size: 0.9rem !important;
   }
 
-  /* === MANIFESTO / TIMELINE (Dobra 2) === */
+  .hero-line {
+    display: block !important; /* Força as 5 linhas conforme pedido */
+    white-space: normal !important;
+  }
+
+  /* Sincronizando tamanhos Mobile */
+  .section-header h1, 
   .manifesto-timeline h1 {
-    font-size: 1.2rem;
-    line-height: 1.25;
+    font-size: 1.4rem !important;
+    line-height: 1.25 !important;
   }
 
-  .subtitle {
-    font-size: 0.85rem;
-  }
-
-  /* === CTA (Dobra 4) === */
-  .cta-content-v4 h1 {
-    font-size: 1.2rem;
-    line-height: 1.25;
-  }
-
-  .cta-content-v4 h2 {
-    font-size: 0.85rem;
-    line-height: 1.6;
-  }
-
-  /* === QUEM SOMOS (Dobra 5) === */
-  .about-header-v5 h1 {
-    font-size: 1.2rem;
-    line-height: 1.25;
-  }
-
-  /* === FAQ (Dobra 6) === */
-  .faq-dark-theme h1 {
-    font-size: 1.2rem;
-    line-height: 1.25;
+  .section-header .subtitle,
+  .manifesto-timeline p.subtitle {
+    font-size: 0.85rem !important;
+    line-height: 1.5 !important;
+    color: var(--text-muted) !important;
   }
 
   /* === TICKER STRIP === */
@@ -1477,6 +1634,18 @@ section {
 
   .about-v5-hybrid {
     padding: 40px 0 !important;
+  }
+
+  /* Sincronizando tamanhos Mobile - CTA */
+  .cta-content-v4 h1 {
+    font-size: 1.4rem !important;
+    line-height: 1.25 !important;
+  }
+
+  .cta-content-v4 h2 {
+    font-size: 0.85rem !important;
+    line-height: 1.5 !important;
+    opacity: 0.9;
   }
 }
 
