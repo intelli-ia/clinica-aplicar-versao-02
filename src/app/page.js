@@ -143,7 +143,7 @@ export default function Home() {
               <li><a href="#faq">FAQ</a></li>
             </ul>
             <div className="nav-cta">
-              <a href="https://api.whatsapp.com/send/?phone=5511917683939&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" className="btn btn-sm btn-glass">Agendar</a>
+              <a href="https://api.whatsapp.com/send/?phone=5511930034781&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" className="btn btn-sm btn-glass">Agendar</a>
             </div>
           </div>
           {/* Hamburger Button - only visible on mobile */}
@@ -163,7 +163,7 @@ export default function Home() {
             <li><a href="#manifesto" onClick={() => setMenuOpen(false)}>A Clínica</a></li>
             <li><a href="#about" onClick={() => setMenuOpen(false)}>Quem Somos</a></li>
             <li><a href="#faq" onClick={() => setMenuOpen(false)}>FAQ</a></li>
-            <li><a href="https://api.whatsapp.com/send/?phone=5511917683939&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" className="mobile-menu-cta" onClick={() => setMenuOpen(false)}>Agendar consulta</a></li>
+            <li><a href="https://api.whatsapp.com/send/?phone=5511930034781&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" className="mobile-menu-cta" onClick={() => setMenuOpen(false)}>Agendar consulta</a></li>
           </ul>
         </div>
       </nav>
@@ -177,15 +177,22 @@ export default function Home() {
           fill
           priority
           quality={100}
-          className="hero-bg-image"
-          style={{ objectPosition: '85% center' }}
+          className="hero-bg-image pc-only"
+        />
+        <Image 
+          src="/hero_mobile.png" 
+          alt="Clínica Aplicar Hero Mobile" 
+          fill
+          priority
+          quality={100}
+          className="hero-bg-image mobile-only"
         />
 
         <div className="hero-content">
           <span className="hero-eyebrow">CLÍNICA APLICAR</span>
           <h1>
             <span className="hero-line">Transforme a </span>
-            <span className="hero-line">incerteza em um </span>
+            <span className="hero-line">incerteza <br className="pc-only" />em um </span>
             <span className="hero-line"><span className="highlight">plano claro</span> para o </span>
             <span className="hero-line">desenvolvimento </span>
             <span className="hero-line">do seu filho</span>
@@ -194,7 +201,7 @@ export default function Home() {
             Tenha diagnóstico preciso, tratamento especializado e um caminho claro para o desenvolvimento do seu filho
           </h2>
           <div className="hero-btns">
-            <a href="https://api.whatsapp.com/send/?phone=5511917683939&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" className="btn btn-primary">Fale conosco</a>
+            <a href="https://api.whatsapp.com/send/?phone=5511930034781&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" className="btn btn-primary">Fale conosco</a>
             <a href="#manifesto" className="btn btn-secondary">Saiba mais</a>
           </div>
         </div>
@@ -212,7 +219,18 @@ export default function Home() {
             <span className="separator">•</span>
             <span>CONSTRUIR, NÃO CORRIGIR</span>
             <span className="separator">•</span>
-            {/* Repetir para o loop ser infinito */}
+            {/* Terceira repetição */}
+            <span>TRANSPARÊNCIA E ENTREGA</span>
+            <span className="separator">•</span>
+            <span>20+ ANOS DE RESULTADOS</span>
+            <span className="separator">•</span>
+            <span>CIÊNCIA ABA ADAPTADA</span>
+            <span className="separator">•</span>
+            <span>ONDE A VIDA ACONTECE</span>
+            <span className="separator">•</span>
+            <span>CONSTRUIR, NÃO CORRIGIR</span>
+            <span className="separator">•</span>
+            {/* Quarta repetição */}
             <span>TRANSPARÊNCIA E ENTREGA</span>
             <span className="separator">•</span>
             <span>20+ ANOS DE RESULTADOS</span>
@@ -292,7 +310,7 @@ export default function Home() {
             <h2>Agende uma conversa com nossa equipe. Vamos entender o momento do seu filho e apresentar o melhor caminho para o desenvolvimento dele.</h2>
             
             <div className="cta-action-v4">
-              <a href="https://api.whatsapp.com/send/?phone=5511917683939&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" className="btn btn-cta-light">Fale conosco no WhatsApp</a>
+              <a href="https://api.whatsapp.com/send/?phone=5511930034781&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" className="btn btn-cta-light">Fale conosco no WhatsApp</a>
             </div>
           </div>
         </div>
@@ -316,7 +334,7 @@ export default function Home() {
             <p>Não oferecemos atalhos, oferecemos acompanhamento real, com resultados visíveis, mas que respeitam a sua história e o seu tempo.</p>
             
             <div className="about-cta-v5">
-              <a href="https://api.whatsapp.com/send/?phone=5511917683939&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" className="btn btn-primary">Quero esse tipo de cuidado</a>
+              <a href="https://api.whatsapp.com/send/?phone=5511930034781&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" className="btn btn-primary">Quero esse tipo de cuidado</a>
             </div>
           </div>
 
@@ -360,7 +378,7 @@ export default function Home() {
         </div>
 
         <div className="faq-footer-v7">
-          <a href="https://api.whatsapp.com/send/?phone=5511917683939&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" className="btn btn-primary">
+          <a href="https://api.whatsapp.com/send/?phone=5511930034781&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer" className="btn btn-primary">
             Tire outras dúvidas
           </a>
         </div>
