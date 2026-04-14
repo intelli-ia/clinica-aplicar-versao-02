@@ -294,7 +294,7 @@ export default function Home() {
             <div className="timeline-dot"></div>
             <div className="timeline-card">
               <h3>Construir, não Corrigir</h3>
-              <p>Desenvolvimento não é sobre consertar o que está "atrasado", mas sobre construir as bases de um futuro sólido.</p>
+              <p>Desenvolvimento não é sobre consertar o que está &quot;atrasado&quot;, mas sobre construir as bases de um futuro sólido.</p>
             </div>
           </div>
         </div>
