@@ -468,6 +468,86 @@ section {
   border-color: var(--secondary-color);
 }
 
+/* Social Proof na Hero */
+.hero-social-proof {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.avatar-group {
+  display: flex;
+  align-items: center;
+}
+
+.avatar-group .avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  overflow: hidden;
+  margin-left: -12px;
+  position: relative;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.avatar-group .avatar:first-child {
+  margin-left: 0;
+}
+
+.avatar-group .avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.proof-text {
+  text-align: left;
+}
+
+.proof-text strong {
+  display: block;
+  font-size: 0.95rem;
+  color: var(--secondary-color);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.proof-text span {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+  .hero-social-proof {
+    display: flex;
+    justify-content: center;
+    margin-top: 6px !important;
+    gap: 8px;
+  }
+  
+  .avatar-group .avatar {
+    width: 24px;
+    height: 24px;
+    margin-left: -6px;
+  }
+  
+  .proof-text strong {
+    font-size: 0.65rem;
+    line-height: 1 !important;
+    margin: 0 !important;
+  }
+  
+  .proof-text span {
+    display: block !important;
+    font-size: 0.55rem;
+    line-height: 1 !important;
+    margin-top: 3px !important;
+  }
+}
+
 /* Ticker Infinito */
 .ticker-wrapper {
   background: rgba(255, 255, 255, 0.7);
@@ -488,7 +568,7 @@ section {
   white-space: nowrap;
   width: max-content; /* Garante que o tamanho seja o do texto, não da tela */
   align-items: center; 
-  animation: ticker 14s linear infinite;
+  animation: ticker 40s linear infinite;
 }
 
 .ticker-content span {
@@ -821,138 +901,120 @@ section {
   margin-top: 16px;
 }
 
-/* FAQ Section v7 - Centered Grid Edition */
-.faq-grid-v7 {
+/* FAQ Section v8 - Split Sidebar Edition */
+.faq-split-v8 {
   width: 100%;
-  background-color: var(--bg-alt);
+  background-color: #ffffff;
   padding: 120px 5%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
-.faq-header-v7 {
-  text-align: center;
-  margin-bottom: 60px;
-}
-
-.faq-header-v7 h1 {
-  font-size: 3rem;
-  color: var(--secondary-color);
-  margin-bottom: 16px;
-}
-
-.faq-container-v7 {
-  max-width: 1200px;
-  width: 100%;
+.faq-container-v8 {
+  max-width: 1300px;
+  margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  margin-bottom: 60px;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 80px;
 }
 
-.faq-card-v7 {
-  background: #ffffff;
-  border: 1px solid rgba(73, 104, 151, 0.08);
-  border-radius: 20px;
-  padding: 30px;
-  cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  display: flex;
-  flex-direction: column;
+.faq-sidebar-v8 {
+  position: sticky;
+  top: 100px;
   height: fit-content;
 }
 
-.faq-card-v7:hover {
-  transform: translateY(-5px);
-  border-color: var(--secondary-color);
-  box-shadow: 0 15px 40px rgba(73, 104, 151, 0.05);
+.faq-header-v8 h1 {
+  font-size: 3.5rem;
+  line-height: 1.1;
+  color: var(--secondary-color);
+  margin-bottom: 24px;
 }
 
-.faq-card-v7.active {
-  background: var(--secondary-color);
-  border-color: var(--secondary-color);
+.faq-header-v8 h1 span {
+  color: #496897; /* or highlight color */
 }
 
-.faq-question-v7 {
+.faq-header-v8 p {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  max-width: 320px;
+  line-height: 1.6;
+  margin-bottom: 40px;
+}
+
+
+.faq-content-v8 {
   display: flex;
-  align-items: flex-start;
-  gap: 15px;
-  position: relative;
+  flex-direction: column;
 }
 
-.faq-num {
-  font-size: 0.8rem;
-  font-weight: 700;
-  color: var(--secondary-color);
-  opacity: 0.5;
-  margin-top: 4px;
+.faq-item-v8 {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 24px 0;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-.faq-card-v7.active .faq-num {
-  color: #ffffff;
-  opacity: 0.8;
+.faq-question-v8 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
 }
 
-.faq-card-v7 h3 {
-  font-size: 1.05rem;
-  line-height: 1.4;
-  color: var(--secondary-color);
-  margin-right: 20px;
-  flex: 1;
-}
-
-.faq-card-v7.active h3 {
-  color: #ffffff;
-}
-
-.faq-plus {
-  font-size: 1.2rem;
-  color: var(--secondary-color);
+.faq-question-v8 h3 {
+  font-size: 1.1rem;
   font-weight: 600;
+  color: var(--secondary-color);
+  transition: color 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
-.faq-card-v7.active .faq-plus {
-  color: #ffffff;
+.faq-icon-v8 {
+  font-size: 1.5rem;
+  color: var(--secondary-color);
+  font-weight: 300;
 }
 
-.faq-answer-v7 {
+.faq-answer-v8 {
   max-height: 0;
   overflow: hidden;
   opacity: 0;
-  transition: all 0.4s ease;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.faq-card-v7.active .faq-answer-v7 {
-  max-height: 300px;
+.faq-item-v8.active .faq-answer-v8 {
+  max-height: 500px;
   opacity: 1;
-  margin-top: 20px;
-  padding-top: 20px;
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  margin-top: 16px;
 }
 
-.faq-answer-v7 p {
-  font-size: 0.95rem;
+.faq-answer-v8 p {
+  font-size: 1rem;
   line-height: 1.6;
-  color: var(--text-muted);
+  color: #555;
 }
 
-.faq-card-v7.active .faq-answer-v7 p {
-  color: rgba(255, 255, 255, 0.9);
-}
-
-@media (max-width: 1024px) {
-  .faq-container-v7 {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 640px) {
-  .faq-container-v7 {
+@media (max-width: 968px) {
+  .faq-container-v8 {
     grid-template-columns: 1fr;
+    gap: 40px;
   }
-  .faq-header-v7 h1 {
-    font-size: 2.2rem;
+  
+  .faq-sidebar-v8 {
+    position: relative;
+    top: 0;
+    text-align: center;
+  }
+  
+  .faq-header-v8 p {
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .faq-header-v8 h1 {
+    font-size: 2.5rem;
   }
 }
 
@@ -1569,7 +1631,7 @@ section {
     background: #ffffff !important;
     border: none !important;
     box-shadow: 0 20px 50px rgba(0,0,0,0.08) !important;
-    padding: 20px 14px !important; 
+    padding: 20px 14px 16px !important; 
     margin-top: -40px !important; /* Desce o card para revelar completamente o rosto */
     margin-left: 0 !important;
     width: 86% !important; /* Mais estreito */
@@ -1669,6 +1731,10 @@ section {
 
   .ticker-wrapper {
     padding: 8px 0 !important;
+  }
+
+  .ticker-content {
+    animation: ticker 14s linear infinite !important;
   }
 
   /* === DEPOIMENTOS (Dobra 3) === */

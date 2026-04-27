@@ -221,6 +221,25 @@ export default function Home() {
             </a>
             <a href="#manifesto" className="btn btn-secondary">Saiba mais</a>
           </div>
+
+          <div className="hero-social-proof">
+            <div className="avatar-group">
+              {[
+                'https://images.unsplash.com/photo-1536640712-4d4c36ff0e4e?w=80&h=80&fit=crop&crop=entropy&auto=format&q=80',
+                'https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=80&h=80&fit=crop&crop=entropy&auto=format&q=80',
+                'https://images.unsplash.com/photo-1476703993599-0035a21b17a9?w=80&h=80&fit=crop&crop=entropy&auto=format&q=80',
+                'https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=80&h=80&fit=crop&crop=entropy&auto=format&q=80',
+              ].map((src, i) => (
+                <div key={i} className="avatar">
+                  <Image src={src} alt="Paciente atendido" width={40} height={40} />
+                </div>
+              ))}
+            </div>
+            <div className="proof-text">
+              <strong>+20 anos de Experiência</strong>
+              <span>Centenas de Crianças atendidas</span>
+            </div>
+          </div>
         </div>
 
         {/* Ticker Infinito (Agora fixo na base da Hero) */}
@@ -352,9 +371,7 @@ export default function Home() {
           <div className="about-content-v5-left">
             <p>Muitas famílias chegam até nós exaustas por não verem evolução real, sentindo que cada dia é um tempo precioso que não volta mais.</p>
             
-            <div className="about-glass-card-v5-light">
-              <p><strong>Na Clínica Aplicar, sob a liderança da Dra. Karina Roig Gatto — psicóloga e mestre com 20 anos de experiência — nós oferecemos ciência, escuta profunda e um caminho claro para a autonomia e comunicação do seu filho em ambientes reais.</strong></p>
-            </div>
+            <p>Na Clínica Aplicar, sob a liderança da Dra. Karina Roig Gatto — psicóloga e mestre com 20 anos de experiência — nós oferecemos ciência, escuta profunda e um caminho claro para a autonomia e comunicação do seu filho em ambientes reais.</p>
 
             <p>Não oferecemos atalhos, oferecemos acompanhamento real, com resultados visíveis, mas que respeitam a sua história e o seu tempo.</p>
             
@@ -384,42 +401,44 @@ export default function Home() {
         </div>
       </section>
 
-      {/* D6 - FAQ (Grid Edition) */}
-      <section className="faq-grid-v7 reveal" id="faq">
-        <div className="faq-header-v7">
-          <h1>Perguntas <span className="highlight-alt">Frequentes</span></h1>
-          <p>Tire suas principais dúvidas sobre o atendimento na Clínica Aplicar</p>
-        </div>
-
-        <div className="faq-container-v7">
-          {faqs.map((faq, index) => (
-            <div 
-              key={index} 
-              className={`faq-card-v7 ${activeFaq === index ? 'active' : ''}`}
-              onClick={() => toggleFaq(index)}
-            >
-              <div className="faq-question-v7">
-                <span className="faq-num">0{index + 1}</span>
-                <h3>{faq.question}</h3>
-                <span className="faq-plus">{activeFaq === index ? '−' : '+'}</span>
-              </div>
-              <div className="faq-answer-v7">
-                <p>{faq.answer}</p>
-              </div>
+      {/* D6 - FAQ (Split Edition) */}
+      <section className="faq-split-v8 reveal" id="faq">
+        <div className="faq-container-v8">
+          <div className="faq-sidebar-v8">
+            <div className="faq-header-v8">
+              <h1>Perguntas <br /><span>Frequentes</span></h1>
+              <p>Aqui você encontra as principais dúvidas sobre os nossos atendimentos.</p>
             </div>
-          ))}
-        </div>
+            <div className="faq-support-v8">
+              <a 
+                href="https://api.whatsapp.com/send/?phone=5511930034781&text&type=phone_number&app_absent=0" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="btn btn-primary"
+                onClick={() => fpixel.event('Lead')}
+              >
+                Falar com suporte
+              </a>
+            </div>
+          </div>
 
-        <div className="faq-footer-v7">
-          <a 
-            href="https://api.whatsapp.com/send/?phone=5511930034781&text&type=phone_number&app_absent=0" 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            className="btn btn-primary"
-            onClick={() => fpixel.event('Lead')}
-          >
-            Tire outras dúvidas
-          </a>
+          <div className="faq-content-v8">
+            {faqs.map((faq, index) => (
+              <div 
+                key={index} 
+                className={`faq-item-v8 ${activeFaq === index ? 'active' : ''}`}
+                onClick={() => toggleFaq(index)}
+              >
+                <div className="faq-question-v8">
+                  <h3>{faq.question}</h3>
+                  <span className="faq-icon-v8">{activeFaq === index ? '−' : '+'}</span>
+                </div>
+                <div className="faq-answer-v8">
+                  <p>{faq.answer}</p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
