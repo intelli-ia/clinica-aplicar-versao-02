@@ -2,6 +2,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import FacebookPixel from "@/components/FacebookPixel";
 import GoogleTagManager from "@/components/GoogleTagManager";
+import MicrosoftClarity from "@/components/MicrosoftClarity";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,6 +25,7 @@ export default function RootLayout({ children }) {
       <head>
         <GoogleTagManager />
         <FacebookPixel />
+        <MicrosoftClarity />
       </head>
       <body>
         <noscript>
