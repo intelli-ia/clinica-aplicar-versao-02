@@ -3,18 +3,22 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import * as fpixel from '@/lib/fpixel';
+import ScrollExpandMedia from '@/components/ScrollExpandMedia';
 
 export default function Home() {
   const [activeFaq, setActiveFaq] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const [navLight, setNavLight] = useState(false);
+  const [navVisible, setNavVisible] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       const testimonials = document.getElementById('testimonials');
       const about = document.getElementById('about');
       const navbar = document.querySelector('.navbar');
-      
+
+      setNavVisible(window.scrollY > window.innerHeight * 0.85);
+
       if (!navbar) return;
 
       const navRect = navbar.getBoundingClientRect();
@@ -32,42 +36,47 @@ export default function Home() {
         setNavLight(false);
       }
     };
-    // Timeline Line Fill functionality
-    const reveals = document.querySelectorAll('.reveal');
-    const timeline = document.querySelector('.timeline-container');
-    const timelineLine = document.querySelector('.timeline-line');
-
-    let maxProgress = 0;
+    // Reveal geral (exclui itens do roadmap — tratados por IntersectionObserver)
+    const reveals = document.querySelectorAll('.reveal:not(.roadmap-item)');
+    const roadmapTrack = document.querySelector('.roadmap-track');
+    const roadmapLine = document.querySelector('.roadmap-line');
 
     const handleScrollEffects = () => {
-      // Existing Reveal effect
       reveals.forEach(reveal => {
-        const windowHeight = window.innerHeight;
         const revealTop = reveal.getBoundingClientRect().top;
-        const revealPoint = 150;
-
-        if (revealTop < windowHeight - revealPoint) {
+        if (revealTop < window.innerHeight - 120) {
           reveal.classList.add('active');
         }
       });
 
-      // New Timeline Line fill effect - ONE WAY
-      if (timeline && timelineLine) {
-        const windowHeight = window.innerHeight;
-        const timelineTop = timeline.getBoundingClientRect().top;
-        const timelineHeight = timeline.offsetHeight;
-
-        const startPoint = windowHeight * 0.7; 
-        let currentProgress = (startPoint - timelineTop) / timelineHeight;
-        currentProgress = Math.max(0, Math.min(currentProgress, 1));
-
-        // Only update if current scroll depth is greater than previous max
-        if (currentProgress > maxProgress) {
-          maxProgress = currentProgress;
-          timelineLine.style.transform = `translateX(-50%) scaleY(${maxProgress})`;
-        }
+      // Linha do roadmap acompanha o scroll bidirecionalmente
+      if (roadmapTrack && roadmapLine) {
+        const trackTop = roadmapTrack.getBoundingClientRect().top;
+        const trackHeight = roadmapTrack.offsetHeight;
+        const startPoint = window.innerHeight * 0.65;
+        let progress = (startPoint - trackTop) / trackHeight;
+        progress = Math.max(0, Math.min(progress, 1));
+        roadmapLine.style.transform = `translateX(-50%) scaleY(${progress})`;
       }
     };
+
+    // IntersectionObserver para itens do roadmap — garante animação mesmo quando já estão visíveis
+    const roadmapItems = document.querySelectorAll('.roadmap-item.reveal');
+    let roadmapObserver;
+    if (roadmapItems.length && 'IntersectionObserver' in window) {
+      roadmapObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('active');
+              roadmapObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.18, rootMargin: '0px 0px -60px 0px' }
+      );
+      roadmapItems.forEach(item => roadmapObserver.observe(item));
+    }
 
     window.addEventListener('scroll', handleScrollEffects);
     window.addEventListener('scroll', handleScroll);
@@ -77,6 +86,7 @@ export default function Home() {
     return () => {
       window.removeEventListener('scroll', handleScrollEffects);
       window.removeEventListener('scroll', handleScroll);
+      if (roadmapObserver) roadmapObserver.disconnect();
     };
   }, []);
 
@@ -132,7 +142,7 @@ export default function Home() {
   return (
     <>
       {/* Navbar */}
-      <nav className={`navbar ${menuOpen ? 'open' : ''}`}>
+      <nav className={`navbar ${navVisible ? 'visible' : ''} ${menuOpen ? 'open' : ''} ${navLight ? 'nav-light' : ''}`}>
         <div className="nav-container">
           <div className="logo">
             <Image src="/logo.png" alt="Clínica Aplicar" width={180} height={60} priority />
@@ -179,18 +189,17 @@ export default function Home() {
 
       {/* D1 - Hero */}
       <section className="hero">
-        {/* Imagem de fundo otimizada que segue o zoom/escala */}
-        <Image 
-          src="/hero_hq.jpg" 
-          alt="Clínica Aplicar Hero" 
+        <Image
+          src="/hero_hq.jpg"
+          alt="Clínica Aplicar Hero"
           fill
           priority
           quality={100}
           className="hero-bg-image pc-only"
         />
-        <Image 
-          src="/hero_mobile.png" 
-          alt="Clínica Aplicar Hero Mobile" 
+        <Image
+          src="/hero_mobile.png"
+          alt="Clínica Aplicar Hero Mobile"
           fill
           priority
           quality={100}
@@ -242,95 +251,95 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Ticker Infinito (Agora fixo na base da Hero) */}
-        <div className="ticker-wrapper">
-          <div className="ticker-content">
-            <span>TRANSPARÊNCIA E ENTREGA</span>
-            <span className="separator">•</span>
-            <span>20+ ANOS DE RESULTADOS</span>
-            <span className="separator">•</span>
-            <span>CIÊNCIA ABA ADAPTADA</span>
-            <span className="separator">•</span>
-            <span>ONDE A VIDA ACONTECE</span>
-            <span className="separator">•</span>
-            <span>CONSTRUIR, NÃO CORRIGIR</span>
-            <span className="separator">•</span>
-            {/* Terceira repetição */}
-            <span>TRANSPARÊNCIA E ENTREGA</span>
-            <span className="separator">•</span>
-            <span>20+ ANOS DE RESULTADOS</span>
-            <span className="separator">•</span>
-            <span>CIÊNCIA ABA ADAPTADA</span>
-            <span className="separator">•</span>
-            <span>ONDE A VIDA ACONTECE</span>
-            <span className="separator">•</span>
-            <span>CONSTRUIR, NÃO CORRIGIR</span>
-            <span className="separator">•</span>
-            {/* Quarta repetição */}
-            <span>TRANSPARÊNCIA E ENTREGA</span>
-            <span className="separator">•</span>
-            <span>20+ ANOS DE RESULTADOS</span>
-            <span className="separator">•</span>
-            <span>CIÊNCIA ABA ADAPTADA</span>
-            <span className="separator">•</span>
-            <span>ONDE A VIDA ACONTECE</span>
-            <span className="separator">•</span>
-            <span>CONSTRUIR, NÃO CORRIGIR</span>
-            <span className="separator">•</span>
-          </div>
-        </div>
       </section>
-      <section className="manifesto-timeline reveal" id="manifesto">
-        <div className="section-header">
-          <h1>O diagnóstico não define o futuro do seu filho. <br /> <span className="highlight-alt">O tratamento, sim.</span></h1>
-          <p className="subtitle">Entenda como construímos resultados <br /> reais com a ciência ABA</p>
+
+      {/* D2 - Manifesto (ScrollExpandMedia) */}
+      <ScrollExpandMedia
+        id="manifesto"
+        mediaSrc="https://cdn.coverr.co/videos/coverr-children-playing-at-salote-lake-5028/720p.mp4"
+        bgImageSrc="/hero_bg.jpg"
+        titleLeft="O diagnóstico não define o futuro do seu filho."
+        titleRight="O tratamento, sim."
+        scrollToExpand="Role para descobrir"
+      >
+        <div className="manifesto-body">
+          <p>Você não precisa aceitar promessas vazias ou informações conflitantes.</p>
+          <p>
+            Há mais de 20 anos, nós da Clínica Aplicar entregamos resultados reais: crianças
+            desenvolvendo autonomia, se comunicando melhor e construindo uma vida com qualidade.
+          </p>
+          <p>
+            Nossa abordagem é baseada em Análise do Comportamento Aplicada (ABA), ciência
+            comprovada, adaptada à realidade de cada família.
+          </p>
+          <p>
+            Não trabalhamos apenas em consultório. Trabalhamos onde a vida acontece: em casa,
+            na escola, na casa da avó, no shopping, no dia a dia.
+          </p>
+          <p className="manifesto-closing">
+            Porque desenvolvimento não é sobre corrigir. É sobre construir.
+          </p>
+          <div className="manifesto-cta">
+            <a
+              href="https://api.whatsapp.com/send/?phone=5511930034781&text&type=phone_number&app_absent=0"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-primary"
+              onClick={() => fpixel.event('Lead')}
+            >
+              Fale conosco
+            </a>
+          </div>
+        </div>
+      </ScrollExpandMedia>
+
+      {/* D3 - Roadmap */}
+      <section className="roadmap-section" id="valores">
+        <div className="roadmap-header">
+          <span className="roadmap-label">— PASSO A PASSO —</span>
+          <h1>Veja como é simples o processo</h1>
         </div>
 
-        <div className="timeline-container">
-          <div className="timeline-line"></div>
-          
-          {/* Item 1 - Esquerda */}
-          <div className="timeline-item left reveal">
-            <div className="timeline-dot"></div>
-            <div className="timeline-card">
-              <h3>Transparência e Entrega</h3>
-              <p>Você não precisa aceitar promessas vazias ou informações conflitantes. Entregamos clareza e resultados mensuráveis.</p>
+        <div className="roadmap-track">
+          <div className="roadmap-line" />
+
+          {/* Passo 1 - Esquerda */}
+          <div className="roadmap-item left reveal">
+            <div className="roadmap-card">
+              <h3>Primeiro contato</h3>
+              <p>Clique no botão e entre em contato pelo WhatsApp. Vamos entender o momento do seu filho e agendar uma conversa.</p>
+            </div>
+            <div className="roadmap-node"><span>01</span></div>
+            <div className="roadmap-spacer" />
+          </div>
+
+          {/* Passo 2 - Direita */}
+          <div className="roadmap-item right reveal">
+            <div className="roadmap-spacer" />
+            <div className="roadmap-node"><span>02</span></div>
+            <div className="roadmap-card">
+              <h3>Reunião inicial</h3>
+              <p>Conhecemos você, ouvimos sua história e apresentamos nossa abordagem e a proposta de acompanhamento.</p>
             </div>
           </div>
 
-          {/* Item 2 - Direita */}
-          <div className="timeline-item right reveal">
-            <div className="timeline-dot"></div>
-            <div className="timeline-card">
-              <h3>20+ anos de Resultados</h3>
-              <p>Entregamos autonomia e comunicação real para que seu filho construa uma vida com qualidade e independência.</p>
+          {/* Passo 3 - Esquerda */}
+          <div className="roadmap-item left reveal">
+            <div className="roadmap-card">
+              <h3>Avaliação comportamental</h3>
+              <p>Nossa equipe avalia as habilidades e necessidades do seu filho para criar um plano personalizado.</p>
             </div>
+            <div className="roadmap-node"><span>03</span></div>
+            <div className="roadmap-spacer" />
           </div>
 
-          {/* Item 3 - Esquerda */}
-          <div className="timeline-item left reveal">
-            <div className="timeline-dot"></div>
-            <div className="timeline-card">
-              <h3>Ciência ABA Adaptada</h3>
-              <p>Nossa base é a Análise do Comportamento Aplicada, adaptada integralmente à realidade e necessidades da sua família.</p>
-            </div>
-          </div>
-
-          {/* Item 4 - Direita */}
-          <div className="timeline-item right reveal">
-            <div className="timeline-dot"></div>
-            <div className="timeline-card">
-              <h3>Onde a Vida Acontece</h3>
-              <p>Trabalhamos na casa, escola e ambientes reais. Onde quer que seu filho precise desenvolver habilidades para a vida.</p>
-            </div>
-          </div>
-
-          {/* Item 5 - Esquerda */}
-          <div className="timeline-item left reveal">
-            <div className="timeline-dot"></div>
-            <div className="timeline-card">
-              <h3>Construir, não Corrigir</h3>
-              <p>Desenvolvimento não é sobre consertar o que está &quot;atrasado&quot;, mas sobre construir as bases de um futuro sólido.</p>
+          {/* Passo 4 - Direita */}
+          <div className="roadmap-item right reveal">
+            <div className="roadmap-spacer" />
+            <div className="roadmap-node roadmap-node--check"><span>✓</span></div>
+            <div className="roadmap-card">
+              <h3>Início do tratamento</h3>
+              <p>Começa a intervenção ABA, com acompanhamento contínuo e suporte para toda a família.</p>
             </div>
           </div>
         </div>
@@ -341,61 +350,95 @@ export default function Home() {
       <section className="cta-v4 reveal">
         <div className="cta-container-v4">
           <div className="cta-content-v4">
-            <h1>Pronto para dar o <br /><span className="highlight-alt">próximo passo?</span></h1>
-            
-            <h2>Agende uma conversa com nossa equipe. Vamos entender o momento do seu filho e apresentar o melhor caminho para o desenvolvimento dele.</h2>
-            
+            <h1>
+              <span style={{ display: 'block' }}>São mais de 20 anos de dedicação ao</span>
+              <span style={{ display: 'block' }}>desenvolvimento infantil e</span>
+              <span style={{ display: 'block' }}>centenas de famílias realizadas.</span>
+            </h1>
+
+            <h2>Não continue sozinha, dê o primeiro passo para a transformação que seu filho merece.</h2>
+
             <div className="cta-action-v4">
-              <a 
-                href="https://api.whatsapp.com/send/?phone=5511930034781&text&type=phone_number&app_absent=0" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="btn btn-cta-light"
+              <a
+                href="https://api.whatsapp.com/send/?phone=5511930034781&text&type=phone_number&app_absent=0"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-cta-on-orange"
                 onClick={() => fpixel.event('Lead')}
               >
-                Fale conosco no WhatsApp
+                Falar conosco agora
               </a>
+            </div>
+
+            <div className="cta-v4-badges">
+              <span className="cta-v4-badge">✓ Reunião gratuita de diagnóstico</span>
+              <span className="cta-v4-badge">✓ 30 a 60 min · sem compromisso</span>
             </div>
           </div>
         </div>
       </section>
 
-      {/* D5 - Quem Somos (Autoridade - Design Híbrido) */}
-      <section className="about-v5-hybrid reveal" id="about">
-        <div className="about-container-v5-hybrid">
-          
-          <div className="about-header-v5">
-            <h1>Você já tentou de tudo para o <br /><span className="highlight-alt">desenvolvimento do seu filho:</span></h1>
-          </div>
-          
-          <div className="about-content-v5-left">
-            <p>Muitas famílias chegam até nós exaustas por não verem evolução real, sentindo que cada dia é um tempo precioso que não volta mais.</p>
-            
-            <p>Na Clínica Aplicar, sob a liderança da Dra. Karina Roig Gatto — psicóloga e mestre com 20 anos de experiência — nós oferecemos ciência, escuta profunda e um caminho claro para a autonomia e comunicação do seu filho em ambientes reais.</p>
+      {/* D5 - Quem Somos (Premium) */}
+      <section className="about-premium-section" id="about">
+        <div className="about-premium-inner">
 
-            <p>Não oferecemos atalhos, oferecemos acompanhamento real, com resultados visíveis, mas que respeitam a sua história e o seu tempo.</p>
-            
-            <div className="about-cta-v5">
-              <a 
-                href="https://api.whatsapp.com/send/?phone=5511930034781&text&type=phone_number&app_absent=0" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="btn btn-primary"
-                onClick={() => fpixel.event('Lead')}
-              >
-                Quero esse tipo de cuidado
-              </a>
+          {/* Coluna esquerda — texto */}
+          <div className="about-premium-left reveal">
+            <span className="about-eyebrow">— Clínica Aplicar</span>
+            <h1>Quem <span className="highlight-alt">somos</span></h1>
+
+            <p>A Clínica Aplicar nasceu há mais de 20 anos com uma missão clara: transformar vidas através da ciência do comportamento aplicada com humanidade.</p>
+
+            <p>Fundada pela Dra. Karina Roig Gatto — psicóloga e mestre com duas décadas de experiência em TEA — reunimos uma equipe multidisciplinar especializada em Análise do Comportamento Aplicada (ABA) e desenvolvimento infantil.</p>
+
+            <p>Não limitamos o atendimento ao consultório. Vamos até a casa, o restaurante, o supermercado, a escola — onde quer que seu filho precise desenvolver habilidades reais para a vida real.</p>
+
+            <p>Com protocolos exclusivos e abordagem personalizada, já transformamos a rotina de centenas de famílias, promovendo autonomia, comunicação e qualidade de vida.</p>
+
+            <div className="about-accent-line" />
+
+            <blockquote className="about-manifesto">
+              Porque desenvolvimento acontece na vida, não só na terapia.
+            </blockquote>
+
+            <div className="about-stats-row">
+              <div className="about-stat-card">
+                <strong>20+</strong>
+                <span>anos de experiência</span>
+              </div>
+              <div className="about-stat-card">
+                <strong>100s</strong>
+                <span>de famílias realizadas</span>
+              </div>
             </div>
+
+            <a
+              href="https://api.whatsapp.com/send/?phone=5511930034781&text&type=phone_number&app_absent=0"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-primary"
+              onClick={() => fpixel.event('Lead')}
+            >
+              Quero esse tipo de cuidado
+            </a>
           </div>
 
-          <div className="about-image-v5-right">
-            <Image 
-              src="/dra_karina.jpg" 
-              alt="Dra. Karina Roig Gatto - Clínica Aplicar" 
-              width={500} 
-              height={600} 
-              className="founder-photo-hybrid" 
-            />
+          {/* Coluna direita — foto */}
+          <div className="about-premium-right">
+            <div className="about-photo-wrap">
+              <div className="about-photo-bg-accent" />
+              <Image
+                src="/dra_karina.jpg"
+                alt="Dra. Karina Roig Gatto - Clínica Aplicar"
+                width={620}
+                height={780}
+                className="about-photo-img"
+              />
+              <div className="about-photo-badge">
+                <span className="about-badge-name">Dra. Karina Roig Gatto</span>
+                <span className="about-badge-title">Psicóloga · Mestre em TEA</span>
+              </div>
+            </div>
           </div>
 
         </div>

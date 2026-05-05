@@ -150,17 +150,26 @@ section {
 
 /* Navbar */
 .navbar {
-  position: absolute; /* Apenas no topo da Hero, não acompanha o scroll */
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   padding: 20px 5%;
   z-index: 1000;
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
   border-bottom: 1px solid rgba(73, 104, 151, 0.1);
   transition: var(--transition);
+  opacity: 0;
+  transform: translateY(-100%);
+  pointer-events: none;
+}
+
+.navbar.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
 }
 
 .nav-container {
@@ -368,7 +377,7 @@ section {
   height: 100%;
   object-fit: cover;
   object-position: 85% center !important;
-  transform: scale(1.15); /* Aumenta a imagem para dar mais zoom na criança */
+  transform: scale(1.15);
   z-index: 0;
   pointer-events: none;
 }
@@ -396,12 +405,12 @@ section {
   max-width: 600px;
   padding: 2.5rem;
   margin-left: 8%; /* Move a caixa um pouco mais para a direita */
-  background: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(40px);
   -webkit-backdrop-filter: blur(40px);
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.6);
   border-radius: 40px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
   text-align: left;
 }
 
@@ -455,17 +464,35 @@ section {
   font-size: 0.85rem;
 }
 
-/* Ajuste específico para o secundário na Hero (Branco com borda) */
+/* Botão primário laranja na Hero */
+.hero .btn-primary {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+}
+
+.hero .btn-primary:hover {
+  background-color: transparent;
+  color: var(--accent-color);
+  border-color: var(--accent-color);
+  box-shadow: 0 10px 20px rgba(230, 126, 34, 0.2);
+}
+
+/* Botão secundário sutil na Hero */
 .hero .btn-secondary {
-  background-color: #ffffff;
+  background-color: transparent;
   color: var(--secondary-color);
-  border-color: #ffffff;
+  border-color: transparent;
+  opacity: 0.65;
+  font-size: 0.82rem;
 }
 
 .hero .btn-secondary:hover {
-  background-color: var(--secondary-color);
-  color: #ffffff;
-  border-color: var(--secondary-color);
+  background-color: transparent;
+  color: var(--secondary-color);
+  border-color: transparent;
+  opacity: 1;
+  transform: none;
+  box-shadow: none;
 }
 
 /* Social Proof na Hero */
@@ -1219,60 +1246,103 @@ section {
 }
 
 /* Quem Somos V2 */
-/* D4 - CTA Estilo Hero */
+/* D4 - CTA Laranja (seção de maior destaque) */
 .cta-v4 {
   width: 100vw !important;
   max-width: 100vw !important;
-  background-color: var(--secondary-color) !important; /* CTA em destaque com a cor da marca */
+  background-color: var(--accent-color) !important;
   color: #ffffff;
-  padding: 120px 0;
+  padding: 110px 0 100px;
   position: relative !important;
   left: 50% !important;
   right: 50% !important;
   margin-left: -50vw !important;
   margin-right: -50vw !important;
   box-sizing: border-box;
+  /* Corte diagonal no topo — transição forte entre o roadmap escuro e o CTA laranja */
+  clip-path: polygon(0 56px, 100% 0%, 100% 100%, 0% 100%);
+  margin-top: -56px;
 }
 
 .cta-container-v4 {
-  max-width: 800px;
+  max-width: 960px;
   margin: 0 auto;
   padding: 0 5%;
   text-align: center;
 }
 
 .cta-content-v4 h1 {
-  font-size: 3.5rem;
-  line-height: 1.1;
-  margin-bottom: 24px;
+  font-size: clamp(1.4rem, 2.5vw, 2.4rem);
+  line-height: 1.3;
+  margin-bottom: 20px;
   font-weight: 700;
   color: #ffffff;
+  white-space: nowrap;
 }
 
-.cta-content-v4 .highlight-alt {
-  color: var(--accent-color);
-  font-weight: 700;
+.cta-v4-highlight {
+  color: rgba(255, 255, 255, 0.85);
+  font-style: italic;
 }
 
 .cta-content-v4 h2 {
-  font-size: 1.25rem;
-  font-weight: 300;
-  margin-bottom: 48px;
-  opacity: 0.9;
-  color: rgba(255, 255, 255, 0.9);
-  max-width: 700px;
+  font-size: 1.15rem;
+  font-weight: 400;
+  margin-bottom: 40px;
+  color: rgba(255, 255, 255, 0.88);
+  max-width: 600px;
   margin-left: auto;
   margin-right: auto;
-  line-height: 1.6;
+  line-height: 1.65;
 }
 
 .cta-action-v4 {
-  margin-top: 20px;
+  margin-top: 16px;
+  margin-bottom: 28px;
 }
 
-.cta-action-v4 .btn-primary {
-  padding: 18px 50px;
-  font-size: 1.1rem;
+/* Botão sobre fundo laranja: branco com texto escuro */
+.btn-cta-on-orange {
+  background-color: #FFFFFF;
+  color: #1a1a2e;
+  border-color: #FFFFFF;
+  font-weight: 600;
+  font-size: 1.05rem;
+  padding: 16px 44px;
+  border-radius: 50px;
+  border: 2px solid #FFFFFF;
+  display: inline-block;
+  text-decoration: none;
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+.btn-cta-on-orange:hover {
+  background-color: transparent;
+  color: #FFFFFF;
+}
+
+/* Badges de prova social abaixo do botão */
+.cta-v4-badges {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+}
+
+.cta-v4-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 50px;
+  padding: 0.45rem 1.1rem;
+  font-size: 0.85rem;
+  color: #FFFFFF;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
 }
 
 /* D5 - Quem Somos Estilo Híbrido (White Theme) */
@@ -1328,8 +1398,26 @@ section {
   justify-content: space-between;
 }
 
+.about-closing {
+  color: var(--secondary-color) !important;
+  font-size: 1.05rem !important;
+}
+
+.about-stat {
+  display: inline-block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--secondary-color);
+  background: rgba(73, 104, 151, 0.08);
+  border: 1px solid rgba(73, 104, 151, 0.2);
+  border-radius: 50px;
+  padding: 0.4rem 1.2rem;
+  margin-bottom: 1.6rem;
+  font-family: 'Poppins', sans-serif;
+}
+
 .about-content-v5-left p {
-  font-size: 1.15rem;
+  font-size: 1.05rem;
   line-height: 1.8;
   color: #444;
   margin: 0;
@@ -1447,16 +1535,29 @@ section {
 
 /* Responsividade CTA D4 */
 @media (max-width: 768px) {
-  .cta-content-v4 h1 {
-    font-size: 1.2rem; /* Mobile — alinhado ao padrão global */
-  }
-  
-  .cta-content-v4 h2 {
-    font-size: 0.85rem;
+  .cta-v4 {
+    padding: 80px 0 60px;
+    clip-path: polygon(0 32px, 100% 0%, 100% 100%, 0% 100%);
+    margin-top: -32px;
   }
 
-  .cta-v4 {
-    padding: 60px 0;
+  .cta-v4-badges {
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .cta-content-v4 h1 {
+    font-size: 1.35rem;
+    white-space: normal;
+  }
+
+  /* No mobile os spans voltam a ser inline para quebrar naturalmente */
+  .cta-content-v4 h1 span {
+    display: inline !important;
+  }
+
+  .cta-content-v4 h2 {
+    font-size: 0.9rem;
   }
 
   .cta-action-v4 .btn-primary {
@@ -1687,11 +1788,11 @@ section {
 
   /* Botão Primário mobile */
   .hero-btns .btn-primary {
-    background: var(--secondary-color) !important;
+    background: var(--accent-color) !important;
     color: #fff !important;
     border: none !important;
-    font-size: 0.8rem !important; /* Compacto */
-    box-shadow: 0 10px 25px rgba(73, 104, 151, 0.3) !important;
+    font-size: 0.8rem !important;
+    box-shadow: 0 10px 25px rgba(230, 126, 34, 0.3) !important;
   }
 
   /* Botão Secundário mobile (Apenas texto) */
@@ -1793,6 +1894,667 @@ section {
   .mobile-only { display: block !important; }
 }
 
+/* =============================================
+   ScrollExpandMedia — D2 Manifesto
+   ============================================= */
+
+.scroll-expand-section {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100dvh;
+  padding: 0;
+  max-width: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+.scroll-expand-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  height: 100%;
+}
+
+.scroll-expand-bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.38);
+}
+
+.scroll-expand-content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.scroll-expand-frame {
+  height: 100dvh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.scroll-expand-media-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 60px rgba(0, 0, 0, 0.35);
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.scroll-expand-video-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 1);
+}
+
+.scroll-expand-titles {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.4rem;
+  width: 100%;
+  padding: 0 1.5rem;
+}
+
+
+.scroll-expand-title {
+  font-size: clamp(1.4rem, 3.2vw, 2.6rem);
+  font-weight: 600;
+  color: #FFFFFF;
+  font-family: 'Poppins', sans-serif;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+  transition: none !important;
+  line-height: 1.3;
+}
+
+.scroll-expand-hint {
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.85rem;
+  margin-top: 1rem;
+  font-family: 'Poppins', sans-serif;
+  transition: none !important;
+  letter-spacing: 0.04em;
+}
+
+/* Manifesto body */
+.scroll-expand-body {
+  background: #FFFFFF;
+  width: 100%;
+}
+
+.manifesto-body {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 80px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+
+.manifesto-body p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--text-color);
+  font-family: 'Poppins', sans-serif;
+}
+
+.manifesto-body .manifesto-closing {
+  font-weight: 600;
+  font-size: 1.15rem;
+  color: var(--secondary-color);
+  margin-top: 0.5rem;
+}
+
+.manifesto-body .manifesto-cta {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .manifesto-body {
+    padding: 36px 20px;
+    gap: 0.9rem;
+  }
+
+  .manifesto-body p {
+    font-size: 0.9rem;
+    line-height: 1.65;
+  }
+
+  .manifesto-body .manifesto-closing {
+    font-size: 0.95rem;
+  }
+
+  .manifesto-body .manifesto-cta {
+    margin-top: 1.2rem;
+  }
+}
+
+/* ==========================================
+   D3 - Roadmap Section
+   ========================================== */
+
+.roadmap-section {
+  background: #0a1628;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 100px 40px;
+  max-width: 100vw;
+  margin: 0;
+}
+
+.roadmap-header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.roadmap-label {
+  display: block;
+  font-size: 0.72rem;
+  letter-spacing: 0.28em;
+  color: #496897;
+  text-transform: uppercase;
+  margin-bottom: 1.2rem;
+  font-family: 'Poppins', sans-serif;
+}
+
+.roadmap-header h1 {
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  color: #FFFFFF;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  line-height: 1.2;
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+.roadmap-track {
+  max-width: 880px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.roadmap-line {
+  position: absolute;
+  left: 50%;
+  top: 32px;
+  bottom: 32px;
+  width: 2px;
+  background: #496897;
+  transform: translateX(-50%) scaleY(0);
+  transform-origin: top center;
+  z-index: 0;
+  transition: transform 0.05s linear;
+}
+
+.roadmap-item {
+  display: grid;
+  grid-template-columns: 1fr 80px 1fr;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 3.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.roadmap-item:last-child {
+  margin-bottom: 0;
+}
+
+.roadmap-node {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 2px solid #496897;
+  background: #0a1628;
+  color: #496897;
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-self: center;
+  position: relative;
+  z-index: 2;
+  flex-shrink: 0;
+  transition: border-color 0.3s, background 0.3s;
+}
+
+.roadmap-node--check {
+  background: #496897;
+  color: #FFFFFF;
+  font-size: 1.3rem;
+  border-color: #496897;
+}
+
+.roadmap-card {
+  background: rgba(73, 104, 151, 0.1);
+  border: 1px solid rgba(73, 104, 151, 0.22);
+  border-radius: 12px;
+  padding: 1.8rem 2rem;
+  transition: border-color 0.3s, background 0.3s;
+}
+
+.roadmap-card:hover {
+  background: rgba(73, 104, 151, 0.16);
+  border-color: rgba(73, 104, 151, 0.4);
+}
+
+.roadmap-card h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #FFFFFF;
+  margin-bottom: 0.65rem;
+  font-family: 'Poppins', sans-serif;
+}
+
+.roadmap-card p {
+  font-size: 0.93rem;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.65);
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+}
+
+.roadmap-spacer {
+  /* placeholder vazio para o lado oposto */
+}
+
+/* Reveal animations — card desliza do seu lado, nó aparece no lugar */
+.roadmap-item.reveal .roadmap-card {
+  opacity: 0;
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+
+.roadmap-item.reveal .roadmap-node {
+  opacity: 0;
+  transform: scale(0.7);
+  transition: opacity 0.4s ease 0.25s, transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0.25s;
+}
+
+/* Card esquerdo vem da esquerda */
+.roadmap-item.left.reveal .roadmap-card {
+  transform: translateX(-70px);
+}
+
+/* Card direito vem da direita */
+.roadmap-item.right.reveal .roadmap-card {
+  transform: translateX(70px);
+}
+
+/* Estado ativo */
+.roadmap-item.reveal.active .roadmap-card {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.roadmap-item.reveal.active .roadmap-node {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .roadmap-section {
+    padding: 48px 32px;
+    overflow-x: hidden;
+  }
+
+  .roadmap-track {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .roadmap-item {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .roadmap-header {
+    margin-bottom: 32px;
+  }
+
+  .roadmap-label {
+    font-size: 0.65rem;
+  }
+
+  .roadmap-header h1 {
+    font-size: 1.25rem;
+  }
+
+  .roadmap-item {
+    grid-template-columns: 40px 1fr;
+    gap: 0.75rem;
+    margin-bottom: 1.6rem;
+  }
+
+  .roadmap-item .roadmap-node {
+    grid-column: 1;
+    grid-row: 1;
+    justify-self: center;
+    width: 36px;
+    height: 36px;
+    font-size: 0.72rem;
+    border-width: 1.5px;
+  }
+
+  .roadmap-item .roadmap-card {
+    grid-column: 2;
+    grid-row: 1;
+    padding: 0.85rem 1rem;
+    border-radius: 8px;
+    min-width: 0;
+    overflow: hidden;
+    margin-right: 40px;
+  }
+
+  .roadmap-card h3 {
+    font-size: 0.88rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .roadmap-card p {
+    font-size: 0.78rem;
+    line-height: 1.6;
+  }
+
+  .roadmap-item .roadmap-spacer {
+    display: none;
+  }
+
+  .roadmap-item.left .roadmap-card { order: 2; }
+  .roadmap-item.left .roadmap-node { order: 1; }
+
+  .roadmap-line {
+    left: 20px;
+    top: 18px;
+    bottom: 18px;
+    transform: translateX(-50%) scaleY(0);
+    transform-origin: top center;
+  }
+
+  .roadmap-node--check {
+    font-size: 0.9rem;
+  }
+
+  .roadmap-item.left.reveal .roadmap-card,
+  .roadmap-item.right.reveal .roadmap-card {
+    transform: translateX(30px);
+  }
+}
+
+/* ==========================================
+   D5 - Quem Somos Premium
+   ========================================== */
+
+.about-premium-section {
+  background: linear-gradient(160deg, #f8fafc 0%, #eef2f8 100%);
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 100vw;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.about-premium-inner {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 110px 5%;
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 70px;
+  align-items: center;
+}
+
+/* Coluna esquerda */
+.about-eyebrow {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--secondary-color);
+  margin-bottom: 1rem;
+  font-family: 'Poppins', sans-serif;
+}
+
+.about-premium-left h1 {
+  font-size: clamp(1.5rem, 2.6vw, 2.2rem);
+  color: var(--text-color);
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: 1.4rem;
+  letter-spacing: -0.02em;
+}
+
+.about-premium-left h1 .highlight-alt {
+  color: var(--secondary-color);
+}
+
+.about-premium-left p {
+  font-size: 0.88rem;
+  line-height: 1.78;
+  color: #5a6478;
+  margin-bottom: 0.85rem;
+}
+
+.about-accent-line {
+  width: 40px;
+  height: 3px;
+  background: var(--secondary-color);
+  border-radius: 2px;
+  margin: 1.4rem 0;
+}
+
+.about-premium-left .btn {
+  padding: 11px 24px;
+  font-size: 0.85rem;
+}
+
+.about-manifesto {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--secondary-color);
+  line-height: 1.55;
+  margin: 0 0 1.6rem;
+  padding: 0.8rem 1.2rem;
+  background: rgba(73, 104, 151, 0.07);
+  border-left: 3px solid var(--secondary-color);
+  border-radius: 0 10px 10px 0;
+  font-style: normal;
+}
+
+.about-stats-row {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.8rem;
+}
+
+.about-stat-card {
+  background: #fff;
+  border: 1px solid rgba(73, 104, 151, 0.14);
+  border-radius: 14px;
+  padding: 0.9rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  box-shadow: 0 2px 16px rgba(73, 104, 151, 0.07);
+  flex: 1;
+}
+
+.about-stat-card strong {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--secondary-color);
+  line-height: 1;
+  font-family: 'Poppins', sans-serif;
+}
+
+.about-stat-card span {
+  font-size: 0.72rem;
+  color: #8a95a8;
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.4;
+}
+
+/* Coluna direita — foto */
+.about-premium-right {
+  position: relative;
+}
+
+.about-photo-wrap {
+  position: relative;
+}
+
+.about-photo-bg-accent {
+  position: absolute;
+  bottom: -28px;
+  right: -28px;
+  width: 72%;
+  height: 72%;
+  background: linear-gradient(135deg, rgba(73,104,151,0.14) 0%, rgba(73,104,151,0.04) 100%);
+  border-radius: 28px;
+  z-index: 0;
+}
+
+.about-photo-img {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: auto;
+  border-radius: 24px;
+  box-shadow: 0 28px 72px rgba(0, 0, 0, 0.13), 0 6px 20px rgba(73, 104, 151, 0.1);
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.about-photo-img:hover {
+  transform: translateY(-6px);
+}
+
+.about-photo-badge {
+  position: absolute;
+  bottom: 28px;
+  left: -22px;
+  z-index: 2;
+  background: #fff;
+  border-radius: 14px;
+  padding: 0.9rem 1.3rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  border-left: 3px solid var(--secondary-color);
+}
+
+.about-badge-name {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-color);
+  font-family: 'Poppins', sans-serif;
+  white-space: nowrap;
+}
+
+.about-badge-title {
+  font-size: 0.74rem;
+  color: var(--text-muted);
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Mobile */
+@media (max-width: 900px) {
+  .about-premium-inner {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 70px 5%;
+  }
+
+  .about-premium-right {
+    order: -1;
+    max-width: 420px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .about-photo-badge {
+    left: 0;
+    bottom: 16px;
+  }
+
+  .about-photo-bg-accent {
+    display: none;
+  }
+
+  .about-premium-left h1 {
+    font-size: 1.9rem;
+  }
+
+  .about-stats-row {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-premium-inner {
+    padding: 36px 5%;
+  }
+
+  .about-premium-left h1 {
+    font-size: 1.4rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .about-premium-left p {
+    font-size: 0.82rem;
+    line-height: 1.65;
+    margin-bottom: 0.6rem;
+  }
+
+  .about-accent-line {
+    margin: 0.9rem 0;
+  }
+
+  .about-manifesto {
+    margin-bottom: 1rem;
+    padding: 0.6rem 1rem;
+    font-size: 0.82rem;
+  }
+
+  .about-stats-row {
+    margin-bottom: 1.2rem;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .about-photo-badge {
+    position: static;
+    margin-top: 1rem;
+    border-left: 3px solid var(--secondary-color);
+    border-radius: 10px;
+  }
+}
+
 /* Responsividade Footer */
 @media (max-width: 768px) {
   .footer-container {
@@ -1800,7 +2562,7 @@ section {
     gap: 30px;
     text-align: center;
   }
-  
+
   .footer-left {
     flex-direction: column;
     gap: 10px;
