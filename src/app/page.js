@@ -403,11 +403,11 @@ export default function Home() {
 
             <div className="about-stats-row">
               <div className="about-stat-card">
-                <strong>20+</strong>
-                <span>anos de experiência</span>
+                <strong>+20 anos</strong>
+                <span>de experiência</span>
               </div>
               <div className="about-stat-card">
-                <strong>100s</strong>
+                <strong>centenas</strong>
                 <span>de famílias realizadas</span>
               </div>
             </div>
