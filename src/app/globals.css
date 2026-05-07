@@ -1898,38 +1898,22 @@ section {
    ScrollExpandMedia — D2 Manifesto
    ============================================= */
 
-.scroll-expand-section {
+.scroll-expand-container {
+  width: 100%;
   position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-height: 100dvh;
-  padding: 0;
-  max-width: 100%;
-  margin: 0;
   overflow: hidden;
 }
 
-.scroll-expand-bg {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  height: 100%;
-}
-
-.scroll-expand-bg-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.38);
-}
-
-.scroll-expand-content {
-  position: relative;
-  z-index: 1;
-  width: 100%;
+.scroll-expand-section {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
+  justify-content: flex-start;
+  min-height: 100dvh;
+  width: 100%;
+  max-width: 100%;
+  padding: 0;
+  margin: 0;
 }
 
 .scroll-expand-frame {
@@ -1940,6 +1924,20 @@ section {
   align-items: center;
   justify-content: center;
   position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.scroll-expand-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.scroll-expand-bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.38);
 }
 
 .scroll-expand-media-wrapper {
@@ -1948,8 +1946,8 @@ section {
   left: 50%;
   transform: translate(-50%, -50%);
   box-shadow: 0 0 60px rgba(0, 0, 0, 0.35);
-  border-radius: 1rem;
   overflow: hidden;
+  z-index: 1;
 }
 
 .scroll-expand-video-overlay {
@@ -1969,7 +1967,6 @@ section {
   width: 100%;
   padding: 0 1.5rem;
 }
-
 
 .scroll-expand-title {
   font-size: clamp(1.4rem, 3.2vw, 2.6rem);
@@ -1991,6 +1988,11 @@ section {
 }
 
 /* Manifesto body */
+.scroll-expand-body-wrapper {
+  width: 100%;
+  background: #FFFFFF;
+}
+
 .scroll-expand-body {
   background: #FFFFFF;
   width: 100%;
