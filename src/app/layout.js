@@ -30,7 +30,7 @@ export default function RootLayout({ children }) {
       <body>
         <noscript>
           <iframe
-            src="https://www.googletagmanager.com/ns.html?id=GTM-56QS5GTL"
+            src="https://www.googletagmanager.com/ns.html?id=GTM-N7ZMJXS9"
             height="0"
             width="0"
             style={{ display: 'none', visibility: 'hidden' }}

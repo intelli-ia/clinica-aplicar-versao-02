@@ -2,7 +2,7 @@
 
 import Script from 'next/script';
 
-const GTM_ID = 'GTM-56QS5GTL';
+const GTM_ID = 'GTM-N7ZMJXS9';
 
 const GoogleTagManager = () => {
   return (
