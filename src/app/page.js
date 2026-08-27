@@ -303,7 +303,7 @@ export default function Home() {
       <section className="roadmap-section" id="valores">
         <div className="roadmap-header">
           <span className="roadmap-label">— PASSO A PASSO —</span>
-          <h1>Veja como funciona o acompanhamento para seletividade alimentar</h1>
+          <h1>Veja como funciona o acompanhamento <br />para seletividade alimentar</h1>
         </div>
 
         <div className="roadmap-track">
