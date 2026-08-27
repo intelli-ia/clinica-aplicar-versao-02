@@ -91,40 +91,40 @@ export default function Home() {
 
   const faqs = [
     {
-      question: "1. Como funciona a avaliação inicial?",
-      answer: "A avaliação comportamental é o primeiro passo. Nossa equipe analisa o repertório atual da criança, identifica necessidades específicas e traça um plano de intervenção personalizado. Tudo é feito com acolhimento e transparência total com a família."
+      question: "1. O que é seletividade alimentar?",
+      answer: "Seletividade alimentar é uma dificuldade relacionada à aceitação, variedade ou forma como a criança se relaciona com os alimentos. Ela pode aparecer como um repertório muito restrito, recusa de texturas, marcas, cores ou preparos específicos. Cada caso precisa ser compreendido individualmente."
     },
     {
-      question: "2. Vocês atendem plano de saúde?",
-      answer: "Trabalhamos com reembolso de planos de saúde e também orientamos famílias sobre como solicitar liminares quando necessário. Entre em contato para entender como funciona no seu caso específico."
+      question: "2. Meu filho come poucos alimentos. Isso significa que ele tem seletividade alimentar?",
+      answer: "Nem toda recusa alimentar tem a mesma causa. Uma conversa com a família e uma avaliação individualizada ajudam a entender o repertório atual da criança, o contexto das refeições e quais necessidades devem ser consideradas."
     },
     {
-      question: "3. Vocês atendem em todo o Brasil?",
-      answer: "Sim. Além dos atendimentos presenciais na clínica e em São Paulo, realizamos intervenções em outros estados quando necessário, adaptando nossa estrutura à realidade de cada família."
+      question: "3. O acompanhamento serve para obrigar a criança a comer?",
+      answer: "Não. O objetivo é compreender a dificuldade e construir estratégias graduais, respeitando as características da criança e orientando a família sobre como lidar com a alimentação de forma mais clara e possível na rotina."
     },
     {
-      question: "4. Vocês atendem em domicílio/outros lugares?",
-      answer: "Sim, e esse é um dos nossos diferenciais. Atendemos em casa, restaurantes, supermercados, escola, casa de familiares — onde quer que seu filho precise desenvolver habilidades para a vida real."
+      question: "4. Como funciona a avaliação inicial?",
+      answer: "A equipe conversa com os responsáveis sobre a história da criança, os alimentos aceitos e recusados, a rotina das refeições e as principais preocupações da família. A partir dessas informações, são definidos os próximos passos e o plano de acompanhamento."
     },
     {
-      question: "5. A partir de qual idade podem começar?",
-      answer: "Trabalhamos com crianças a partir dos primeiros sinais de atraso no desenvolvimento. Quanto mais cedo iniciamos a intervenção, melhores os resultados. Também atendemos adolescentes."
+      question: "5. A partir de qual idade a Clínica Aplicar atende?",
+      answer: "A Clínica Aplicar acompanha crianças e adolescentes. Entre em contato para entender se o atendimento é indicado para a idade e as necessidades do seu filho."
     },
     {
-      question: "6. Qual a diferença da ABA para outras terapias?",
-      answer: "ABA (Análise do Comportamento Aplicada) é a abordagem com maior respaldo científico para TEA. Trabalhamos com base em evidências, protocolos validados e metas mensuráveis — sempre adaptados à individualidade de cada criança."
+      question: "6. O atendimento acontece apenas no consultório?",
+      answer: "O formato depende da avaliação e da proposta de acompanhamento. Quando necessário, o trabalho pode considerar ambientes da rotina da criança, como casa, escola ou restaurante."
     },
     {
-      question: "7. Como sei se meu filho precisa de intervenção ABA?",
-      answer: "Se você percebe atrasos na comunicação, dificuldades de interação social, comportamentos repetitivos ou seletividade alimentar severa, uma avaliação pode trazer clareza. Entre em contato e vamos conversar sobre o caso."
+      question: "7. Quanto tempo dura o acompanhamento?",
+      answer: "A duração varia de acordo com as necessidades da criança, os objetivos definidos e a evolução observada ao longo do processo. A equipe explica as etapas e reavalia o planejamento quando necessário."
     },
     {
-      question: "8. Quanto tempo dura o tratamento?",
-      answer: "Cada criança tem seu próprio ritmo. O tratamento é contínuo e evolui conforme os avanços. Trabalhamos com metas claras e reavaliações periódicas para garantir progresso constante."
+      question: "8. Vocês atendem por plano de saúde?",
+      answer: "A Clínica Aplicar trabalha com reembolso de planos de saúde, conforme as condições de cada contrato. Fale com a equipe para entender como funciona no seu caso."
     },
     {
-      question: "9. Vocês atendem casos de seletividade alimentar severa?",
-      answer: "Sim. Temos protocolos exclusivos desenvolvidos ao longo de 20 anos especificamente para seletividade alimentar, com alto índice de sucesso. A intervenção acontece nos ambientes reais: restaurantes, casa, festas."
+      question: "9. Como faço para saber se o acompanhamento é indicado para o meu filho?",
+      answer: "O primeiro passo é conversar com a equipe e explicar o que acontece nas refeições, quais alimentos a criança aceita ou recusa e quais são as principais dificuldades da família. A partir disso, vocês recebem orientação sobre o próximo passo."
     }
   ];
 
@@ -208,14 +208,13 @@ export default function Home() {
         <div className="hero-content">
           <span className="hero-eyebrow">CLÍNICA APLICAR</span>
           <h1>
-            <span className="hero-line">Transforme a </span>
-            <span className="hero-line">incerteza <br className="pc-only" />em um </span>
-            <span className="hero-line"><span className="highlight">plano claro</span> para o </span>
-            <span className="hero-line">desenvolvimento </span>
-            <span className="hero-line">do seu filho</span>
+            <span className="hero-line">Avaliação e </span>
+            <span className="hero-line">acompanhamento para </span>
+            <span className="hero-line"><span className="highlight">seletividade alimentar</span> </span>
+            <span className="hero-line">infantil</span>
           </h1>
           <h2 className="hero-description">
-            Tenha diagnóstico preciso, tratamento especializado e um caminho claro para o desenvolvimento do seu filho
+            Seu filho come poucos alimentos, recusa novas texturas ou vive momentos difíceis nas refeições? Tenha apoio especializado para entender a seletividade alimentar e construir um caminho possível para a rotina da sua família.
           </h2>
           <div className="hero-btns">
             <a 
@@ -225,7 +224,7 @@ export default function Home() {
               className="btn btn-primary"
               onClick={() => fpixel.event('Lead')}
             >
-              Fale conosco
+              Agendar conversa sobre seletividade alimentar
             </a>
             <a href="#manifesto" className="btn btn-secondary">Saiba mais</a>
           </div>
@@ -256,25 +255,35 @@ export default function Home() {
       <section className="manifesto-section" id="manifesto">
         <div className="manifesto-body">
           <h1>
-            O diagnóstico não define o futuro do seu filho.{' '}
-            <span className="highlight-alt">O tratamento, sim.</span>
+            Seletividade alimentar não se resolve com pressão.{' '}
+            <span className="highlight-alt">Se resolve com compreensão e acompanhamento.</span>
           </h1>
 
-          <p>Você não precisa aceitar promessas vazias ou informações conflitantes.</p>
           <p>
-            Há mais de 20 anos, nós da Clínica Aplicar entregamos resultados reais: crianças
-            desenvolvendo autonomia, se comunicando melhor e construindo uma vida com qualidade.
+            Quando a criança aceita poucos alimentos, recusa determinadas texturas ou não tolera
+            mudanças no preparo das refeições, a alimentação pode se tornar uma fonte de
+            preocupação para toda a família.
           </p>
           <p>
-            Nossa abordagem é baseada em Análise do Comportamento Aplicada (ABA), ciência
-            comprovada, adaptada à realidade de cada família.
+            Você não precisa lidar sozinho com recusas, insegurança e conflitos na hora de comer.
           </p>
           <p>
-            Não trabalhamos apenas em consultório. Trabalhamos onde a vida acontece: em casa,
-            na escola, na casa da avó, no shopping, no dia a dia.
+            Antes de definir qualquer estratégia, é importante entender o repertório alimentar da
+            criança, sua rotina, o contexto das refeições e os fatores que podem estar
+            relacionados a essa dificuldade.
+          </p>
+          <p>
+            Na Clínica Aplicar, o acompanhamento começa com escuta e avaliação individualizada.
+            Nossa equipe compreende as necessidades da criança e constrói estratégias que façam
+            sentido para a realidade de cada família.
+          </p>
+          <p>
+            O trabalho não se limita ao consultório. As estratégias precisam funcionar em casa,
+            na escola, em restaurantes, em festas e nos demais ambientes em que a criança vive.
           </p>
           <p className="manifesto-closing">
-            Porque desenvolvimento não é sobre corrigir. É sobre construir.
+            Porque ampliar a relação com a alimentação não é sobre obrigar. É sobre construir
+            novos caminhos.
           </p>
           <div className="manifesto-cta">
             <a
@@ -294,7 +303,7 @@ export default function Home() {
       <section className="roadmap-section" id="valores">
         <div className="roadmap-header">
           <span className="roadmap-label">— PASSO A PASSO —</span>
-          <h1>Veja como é simples o processo</h1>
+          <h1>Veja como funciona o acompanhamento para seletividade alimentar</h1>
         </div>
 
         <div className="roadmap-track">
@@ -304,7 +313,7 @@ export default function Home() {
           <div className="roadmap-item left reveal">
             <div className="roadmap-card">
               <h3>Primeiro contato</h3>
-              <p>Clique no botão e entre em contato pelo WhatsApp. Vamos entender o momento do seu filho e agendar uma conversa.</p>
+              <p>Clique no botão e entre em contato pelo WhatsApp. Vamos entender o momento da sua família e conhecer as principais dificuldades nas refeições.</p>
             </div>
             <div className="roadmap-node"><span>01</span></div>
             <div className="roadmap-spacer" />
@@ -316,15 +325,15 @@ export default function Home() {
             <div className="roadmap-node"><span>02</span></div>
             <div className="roadmap-card">
               <h3>Reunião inicial</h3>
-              <p>Conhecemos você, ouvimos sua história e apresentamos nossa abordagem e a proposta de acompanhamento.</p>
+              <p>Conhecemos a história da criança, os alimentos que ela aceita ou recusa e como acontecem as refeições no dia a dia.</p>
             </div>
           </div>
 
           {/* Passo 3 - Esquerda */}
           <div className="roadmap-item left reveal">
             <div className="roadmap-card">
-              <h3>Avaliação comportamental</h3>
-              <p>Nossa equipe avalia as habilidades e necessidades do seu filho para criar um plano personalizado.</p>
+              <h3>Avaliação da alimentação</h3>
+              <p>Nossa equipe avalia o repertório alimentar e as necessidades da criança para compreender a dificuldade e definir os próximos passos.</p>
             </div>
             <div className="roadmap-node"><span>03</span></div>
             <div className="roadmap-spacer" />
@@ -335,8 +344,8 @@ export default function Home() {
             <div className="roadmap-spacer" />
             <div className="roadmap-node roadmap-node--check"><span>✓</span></div>
             <div className="roadmap-card">
-              <h3>Início do tratamento</h3>
-              <p>Começa a intervenção ABA, com acompanhamento contínuo e suporte para toda a família.</p>
+              <h3>Plano de acompanhamento</h3>
+              <p>A partir da avaliação, construímos estratégias personalizadas para a criança e orientações que possam ser aplicadas com mais clareza e segurança na rotina da família.</p>
             </div>
           </div>
         </div>
@@ -348,12 +357,11 @@ export default function Home() {
         <div className="cta-container-v4">
           <div className="cta-content-v4">
             <h1>
-              <span style={{ display: 'block' }}>São mais de 20 anos de dedicação ao</span>
-              <span style={{ display: 'block' }}>desenvolvimento infantil e</span>
-              <span style={{ display: 'block' }}>centenas de famílias realizadas.</span>
+              <span style={{ display: 'block' }}>Dê o primeiro passo para entender a</span>
+              <span style={{ display: 'block' }}>seletividade alimentar do seu filho.</span>
             </h1>
 
-            <h2>Não continue sozinha, dê o primeiro passo para a transformação que seu filho merece.</h2>
+            <h2>Você não precisa continuar lidando sozinha com as dificuldades nas refeições. Fale com a nossa equipe, conte o que está acontecendo e entenda como funciona o acompanhamento para a sua família.</h2>
 
             <div className="cta-action-v4">
               <a
@@ -363,12 +371,12 @@ export default function Home() {
                 className="btn btn-cta-on-orange"
                 onClick={() => fpixel.event('Lead')}
               >
-                Falar conosco agora
+                Agendar conversa sobre seletividade alimentar
               </a>
             </div>
 
             <div className="cta-v4-badges">
-              <span className="cta-v4-badge">✓ Reunião gratuita de diagnóstico</span>
+              <span className="cta-v4-badge">✓ Reunião inicial gratuita</span>
               <span className="cta-v4-badge">✓ 30 a 60 min · sem compromisso</span>
             </div>
           </div>
@@ -386,26 +394,22 @@ export default function Home() {
 
             <p>A Clínica Aplicar nasceu há mais de 20 anos com uma missão clara: transformar vidas através da ciência do comportamento aplicada com humanidade.</p>
 
-            <p>Fundada pela Dra. Karina Roig Gatto — psicóloga e mestre com duas décadas de experiência em TEA — reunimos uma equipe multidisciplinar especializada em Análise do Comportamento Aplicada (ABA) e desenvolvimento infantil.</p>
+            <p>Fundada pela Dra. Karina Roig Gatto — psicóloga e mestre com duas décadas de experiência em desenvolvimento infantil — reunimos uma equipe multidisciplinar dedicada a compreender cada criança de forma individualizada.</p>
 
-            <p>Não limitamos o atendimento ao consultório. Vamos até a casa, o restaurante, o supermercado, a escola — onde quer que seu filho precise desenvolver habilidades reais para a vida real.</p>
+            <p>No acompanhamento da seletividade alimentar, consideramos o repertório alimentar da criança, sua rotina, suas preferências e os desafios vividos pela família nas refeições.</p>
 
-            <p>Com protocolos exclusivos e abordagem personalizada, já transformamos a rotina de centenas de famílias, promovendo autonomia, comunicação e qualidade de vida.</p>
+            <p>Nosso diferencial está em transformar objetivos terapêuticos em estratégias que façam sentido na vida real. Por isso, o acompanhamento pode considerar os ambientes em que a criança se alimenta, como casa, escola, restaurante e outros locais da rotina.</p>
 
             <div className="about-accent-line" />
 
             <blockquote className="about-manifesto">
-              Porque desenvolvimento acontece na vida, não só na terapia.
+              Porque uma orientação só é útil quando consegue fazer sentido no dia a dia.
             </blockquote>
 
             <div className="about-stats-row">
               <div className="about-stat-card">
                 <strong>+20 anos</strong>
-                <span>de experiência</span>
-              </div>
-              <div className="about-stat-card">
-                <strong>centenas</strong>
-                <span>de famílias realizadas</span>
+                <span>de desenvolvimento infantil</span>
               </div>
             </div>
 
