@@ -3,7 +3,6 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import * as fpixel from '@/lib/fpixel';
-import ScrollExpandMedia from '@/components/ScrollExpandMedia';
 
 export default function Home() {
   const [activeFaq, setActiveFaq] = useState(null);
@@ -253,16 +252,14 @@ export default function Home() {
 
       </section>
 
-      {/* D2 - Manifesto (ScrollExpandMedia) */}
-      <ScrollExpandMedia
-        id="manifesto"
-        mediaSrc="https://cdn.coverr.co/videos/coverr-children-playing-at-salote-lake-5028/720p.mp4"
-        bgImageSrc="/hero_bg.jpg"
-        titleLeft="O diagnóstico não define o futuro do seu filho."
-        titleRight="O tratamento, sim."
-        scrollToExpand="Role para descobrir"
-      >
+      {/* D2 - Manifesto */}
+      <section className="manifesto-section" id="manifesto">
         <div className="manifesto-body">
+          <h1>
+            O diagnóstico não define o futuro do seu filho.{' '}
+            <span className="highlight-alt">O tratamento, sim.</span>
+          </h1>
+
           <p>Você não precisa aceitar promessas vazias ou informações conflitantes.</p>
           <p>
             Há mais de 20 anos, nós da Clínica Aplicar entregamos resultados reais: crianças
@@ -291,7 +288,7 @@ export default function Home() {
             </a>
           </div>
         </div>
-      </ScrollExpandMedia>
+      </section>
 
       {/* D3 - Roadmap */}
       <section className="roadmap-section" id="valores">
