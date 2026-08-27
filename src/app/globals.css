@@ -376,7 +376,7 @@ section {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 85% center !important;
+  object-position: 85% 30% !important; /* Y menor = imagem mais para baixo */
   transform: scale(1.15);
   z-index: 0;
   pointer-events: none;

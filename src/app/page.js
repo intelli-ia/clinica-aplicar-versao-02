@@ -189,16 +189,16 @@ export default function Home() {
       {/* D1 - Hero */}
       <section className="hero">
         <Image
-          src="/hero_hq.jpg"
-          alt="Clínica Aplicar Hero"
+          src="/hero_seletividade.jpg"
+          alt="Criança recusando legumes durante a refeição"
           fill
           priority
           quality={100}
           className="hero-bg-image pc-only"
         />
         <Image
-          src="/hero_mobile.png"
-          alt="Clínica Aplicar Hero Mobile"
+          src="/hero_seletividade_mobile.jpg"
+          alt="Criança recusando legumes durante a refeição"
           fill
           priority
           quality={100}
