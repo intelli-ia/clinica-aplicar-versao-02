@@ -254,47 +254,61 @@ export default function Home() {
       {/* D2 - Manifesto */}
       <section className="manifesto-section" id="manifesto">
         <div className="manifesto-body">
-          <h1>
-            Seletividade alimentar não se resolve com pressão.{' '}
-            <span className="highlight-alt">Se resolve com compreensão e acompanhamento.</span>
-          </h1>
+          <div className="manifesto-left">
+            <h1>
+              Seletividade alimentar não se resolve com pressão.{' '}
+              <span className="highlight-alt">Se resolve com compreensão e acompanhamento.</span>
+            </h1>
 
-          <p>
-            Quando a criança aceita poucos alimentos, recusa determinadas texturas ou não tolera
-            mudanças no preparo das refeições, a alimentação pode se tornar uma fonte de
-            preocupação para toda a família.
-          </p>
-          <p>
-            Você não precisa lidar sozinho com recusas, insegurança e conflitos na hora de comer.
-          </p>
-          <p>
-            Antes de definir qualquer estratégia, é importante entender o repertório alimentar da
-            criança, sua rotina, o contexto das refeições e os fatores que podem estar
-            relacionados a essa dificuldade.
-          </p>
-          <p>
-            Na Clínica Aplicar, o acompanhamento começa com escuta e avaliação individualizada.
-            Nossa equipe compreende as necessidades da criança e constrói estratégias que façam
-            sentido para a realidade de cada família.
-          </p>
-          <p>
-            O trabalho não se limita ao consultório. As estratégias precisam funcionar em casa,
-            na escola, em restaurantes, em festas e nos demais ambientes em que a criança vive.
-          </p>
-          <p className="manifesto-closing">
-            Porque ampliar a relação com a alimentação não é sobre obrigar. É sobre construir
-            novos caminhos.
-          </p>
-          <div className="manifesto-cta">
-            <a
-              href="https://api.whatsapp.com/send/?phone=5511930034781&text&type=phone_number&app_absent=0"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-primary"
-              onClick={() => fpixel.event('Lead')}
-            >
-              Fale conosco
-            </a>
+            <div className="manifesto-figure">
+              <Image
+                src="/manifesto_seletividade.webp"
+                alt="Criança comendo legumes durante a refeição"
+                fill
+                sizes="(max-width: 900px) 100vw, 45vw"
+                className="manifesto-figure-img"
+              />
+            </div>
+          </div>
+
+          <div className="manifesto-right">
+            <p>
+              Quando a criança aceita poucos alimentos, recusa determinadas texturas ou não tolera
+              mudanças no preparo das refeições, a alimentação pode se tornar uma fonte de
+              preocupação para toda a família.
+            </p>
+            <p>
+              Você não precisa lidar sozinho com recusas, insegurança e conflitos na hora de comer.
+            </p>
+            <p>
+              Antes de definir qualquer estratégia, é importante entender o repertório alimentar da
+              criança, sua rotina, o contexto das refeições e os fatores que podem estar
+              relacionados a essa dificuldade.
+            </p>
+            <p>
+              Na Clínica Aplicar, o acompanhamento começa com escuta e avaliação individualizada.
+              Nossa equipe compreende as necessidades da criança e constrói estratégias que façam
+              sentido para a realidade de cada família.
+            </p>
+            <p>
+              O trabalho não se limita ao consultório. As estratégias precisam funcionar em casa,
+              na escola, em restaurantes, em festas e nos demais ambientes em que a criança vive.
+            </p>
+            <p className="manifesto-closing">
+              Porque ampliar a relação com a alimentação não é sobre obrigar. É sobre construir
+              novos caminhos.
+            </p>
+            <div className="manifesto-cta">
+              <a
+                href="https://api.whatsapp.com/send/?phone=5511930034781&text&type=phone_number&app_absent=0"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-primary"
+                onClick={() => fpixel.event('Lead')}
+              >
+                Fale conosco
+              </a>
+            </div>
           </div>
         </div>
       </section>

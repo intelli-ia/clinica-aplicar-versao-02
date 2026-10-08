@@ -1918,12 +1918,60 @@ section {
 }
 
 .manifesto-body {
-  max-width: 780px;
+  max-width: 1180px;
   margin: 0 auto;
   padding: 80px 32px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: start;
+  gap: 2rem 3.5rem;
+}
+
+/* Coluna esquerda: titulo + imagem abaixo dele */
+.manifesto-left {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+}
+
+/* Coluna direita: corpo do texto */
+.manifesto-right {
   display: flex;
   flex-direction: column;
   gap: 1.4rem;
+}
+
+.manifesto-figure {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 32px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+}
+
+.manifesto-figure-img {
+  object-fit: cover;
+  object-position: 35% center;
+}
+
+/* Uma coluna: a imagem sobe para cima do H1 */
+@media (max-width: 900px) {
+  .manifesto-body {
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 780px;
+    gap: 1.4rem;
+  }
+
+  .manifesto-left {
+    gap: 1.2rem;
+  }
+
+  .manifesto-figure {
+    order: -1;
+    aspect-ratio: 16 / 10;
+    border-radius: 24px;
+  }
 }
 
 .manifesto-body p {
@@ -1948,6 +1996,10 @@ section {
 @media (max-width: 768px) {
   .manifesto-body {
     padding: 36px 20px;
+    gap: 0.9rem;
+  }
+
+  .manifesto-right {
     gap: 0.9rem;
   }
 
@@ -2249,7 +2301,7 @@ section {
   display: grid;
   grid-template-columns: 1fr 1.1fr;
   gap: 70px;
-  align-items: center;
+  align-items: stretch;
 }
 
 /* Coluna esquerda */
@@ -2278,8 +2330,8 @@ section {
 }
 
 .about-premium-left p {
-  font-size: 0.88rem;
-  line-height: 1.78;
+  font-size: 1rem;
+  line-height: 1.75;
   color: #5a6478;
   margin-bottom: 0.85rem;
 }
@@ -2298,7 +2350,7 @@ section {
 }
 
 .about-manifesto {
-  font-size: 0.9rem;
+  font-size: 1.05rem;
   font-weight: 600;
   color: var(--secondary-color);
   line-height: 1.55;
@@ -2338,7 +2390,7 @@ section {
 }
 
 .about-stat-card span {
-  font-size: 0.72rem;
+  font-size: 0.85rem;
   color: #8a95a8;
   font-family: 'Poppins', sans-serif;
   line-height: 1.4;
@@ -2351,6 +2403,7 @@ section {
 
 .about-photo-wrap {
   position: relative;
+  height: 100%;
 }
 
 .about-photo-bg-accent {
@@ -2368,7 +2421,7 @@ section {
   position: relative;
   z-index: 1;
   width: 100%;
-  height: auto;
+  height: 100%;
   border-radius: 24px;
   box-shadow: 0 28px 72px rgba(0, 0, 0, 0.13), 0 6px 20px rgba(73, 104, 151, 0.1);
   object-fit: cover;
@@ -2396,7 +2449,7 @@ section {
 }
 
 .about-badge-name {
-  font-size: 0.88rem;
+  font-size: 1rem;
   font-weight: 600;
   color: var(--text-color);
   font-family: 'Poppins', sans-serif;
@@ -2404,7 +2457,7 @@ section {
 }
 
 .about-badge-title {
-  font-size: 0.74rem;
+  font-size: 0.85rem;
   color: var(--text-muted);
   font-family: 'Poppins', sans-serif;
 }
@@ -2422,6 +2475,11 @@ section {
     max-width: 420px;
     margin: 0 auto;
     width: 100%;
+  }
+
+  .about-photo-wrap,
+  .about-photo-img {
+    height: auto;
   }
 
   .about-photo-badge {
@@ -2453,7 +2511,7 @@ section {
   }
 
   .about-premium-left p {
-    font-size: 0.82rem;
+    font-size: 0.95rem;
     line-height: 1.65;
     margin-bottom: 0.6rem;
   }
@@ -2465,7 +2523,7 @@ section {
   .about-manifesto {
     margin-bottom: 1rem;
     padding: 0.6rem 1rem;
-    font-size: 0.82rem;
+    font-size: 0.95rem;
   }
 
   .about-stats-row {
